@@ -296,6 +296,7 @@ impl Crate {
                         out.externs.push(Extern {
                             name: name.to_string(),
                             lib_name: lib_name.as_str().to_string(),
+                            raw_name: lib_name.as_str().to_string(),
                             extern_type,
                         });
                     } else if arg != "proc_macro" {
