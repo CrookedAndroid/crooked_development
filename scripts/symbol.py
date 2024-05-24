@@ -241,6 +241,59 @@ def SymbolInformationForSet(lib, unique_addrs):
   return result
 
 
+def _OptionalStackRecordField(json_result, field):
+  """Fix up bizarre formatting of llvm-symbolizer output
+
+  Some parts of the FRAME output are output as a string containing a hex
+  integer, or the empty string when it's missing.
+  """
+  value = json_result.get(field, "")
+  if isinstance(value, int):
+    # Leaving this here in case someone decides to fix the types of the
+    # symbolizer output, so it's easier to roll out.
+    return value
+  if value != "":
+    return int(value, 16)
+  return None
+
+
+def GetStackRecordsForSet(lib, unique_addrs):
+  """Look up stack record information for a set of addresses
+
+  Args:
+    lib: library (or executable) pathname containing symbols
+    unique_addrs: set of integer addresses look up.
+
+  Returns:
+    A list of tuples
+    (addr, function_name, local_name, file_line, frame_offset, size, tag_offset)
+    describing the local variables of the stack frame.
+    frame_offset, size, tag_offset may be None.
+  """
+  symbols = SYMBOLS_DIR + lib
+  if not os.path.exists(symbols):
+    symbols = lib
+    if not os.path.exists(symbols):
+      return None
+  cmd = [ToolPath("llvm-symbolizer"), "--output-style=JSON", "--obj=" + symbols]
+  child = _PIPE_ADDR2LINE_CACHE.GetProcess(cmd)
+  records = []
+  for addr in unique_addrs:
+    child.stdin.write("FRAME 0x%x\n" % addr)
+    child.stdin.flush()
+    json_result = json.loads(child.stdout.readline().strip())
+    for frame in json_result["Frame"]:
+      records.append(
+        (addr,
+        frame["FunctionName"],
+        frame["Name"],
+        frame["DeclFile"] + ":" + str(frame["DeclLine"]),
+        frame.get("FrameOffset"),
+        _OptionalStackRecordField(frame, "Size"),
+        _OptionalStackRecordField(frame, "TagOffset")))
+  return records
+
+
 def CallLlvmSymbolizerForSet(lib, unique_addrs):
   """Look up line and symbol information for a set of addresses.
 
