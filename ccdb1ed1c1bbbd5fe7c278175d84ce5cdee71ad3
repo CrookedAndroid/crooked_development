@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "149b287a_2fb2cf1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2024-06-20T23:33:14Z",
+      "side": 1,
+      "message": "Yes, let\u0027s get the HWASan version of that in first, then port to here.",
+      "parentUuid": "92e1020f_75df1032",
+      "revId": "ccdb1ed1c1bbbd5fe7c278175d84ce5cdee71ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03219748_ad3ce383",
@@ -49,6 +67,24 @@
           ]
         }
       ],
+      "revId": "ccdb1ed1c1bbbd5fe7c278175d84ce5cdee71ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6003d10_670f0e87",
+        "filename": "scripts/stack_core.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2024-06-20T23:33:14Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "03219748_ad3ce383",
       "revId": "ccdb1ed1c1bbbd5fe7c278175d84ce5cdee71ad3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
