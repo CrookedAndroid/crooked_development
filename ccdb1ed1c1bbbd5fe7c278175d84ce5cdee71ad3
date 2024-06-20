@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92e1020f_75df1032",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2024-06-20T23:32:29Z",
+      "side": 1,
+      "message": "This does not attempt to diagnose OOB, do you want to do that separately?",
+      "revId": "ccdb1ed1c1bbbd5fe7c278175d84ce5cdee71ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03219748_ad3ce383",
+        "filename": "scripts/stack_core.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2024-06-20T23:32:29Z",
+      "side": 1,
+      "message": "perhaps easier to shift right first, then mask the lower 4 bits?",
+      "fixSuggestions": [
+        {
+          "fixId": "2a0e0875_8b8d88cf",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "scripts/stack_core.py",
+              "range": {
+                "startLine": 170,
+                "startChar": 0,
+                "endLine": 171,
+                "endChar": 0
+              },
+              "replacement": "    fault_tag \u003d (self.mte_fault_address \u003e\u003e 56) \u0026 0xF\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ccdb1ed1c1bbbd5fe7c278175d84ce5cdee71ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
