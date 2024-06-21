@@ -30,22 +30,27 @@ namespace header_checker {
 namespace repr {
 
 
-std::unique_ptr<IRReader>
-IRReader::CreateIRReader(
-    TextFormatIR text_format, const std::set<std::string> *exported_headers) {
+std::unique_ptr<IRReader> IRReader::CreateIRReader(
+    TextFormatIR text_format, std::unique_ptr<ModuleIR> module_ir) {
+  if (module_ir == nullptr) {
+    module_ir = std::make_unique<ModuleIR>();
+  }
   switch (text_format) {
     case TextFormatIR::ProtobufTextFormat:
-      return CreateProtobufIRReader(exported_headers);
+      return CreateProtobufIRReader(std::move(module_ir));
     case TextFormatIR::Json:
-      return CreateJsonIRReader(exported_headers);
+      return CreateJsonIRReader(std::move(module_ir));
     default:
       llvm::errs() << "Text format not supported yet\n";
       return nullptr;
   }
 }
 
-
 bool IRReader::ReadDump(const std::string &dump_file) {
+  if (module_ == nullptr) {
+    llvm::errs() << "ReadDump must not be called after TakeModule\n";
+    return false;
+  }
   module_->SetCompilationUnitPath(dump_file);
   return ReadDumpImpl(dump_file);
 }

@@ -48,7 +48,7 @@ repr::CompatibilityStatusIR HeaderAbiDiff::GenerateCompatibilityReport() {
   std::unique_ptr<repr::IRDiffDumper> ir_diff_dumper =
       repr::IRDiffDumper::CreateIRDiffDumper(text_format_diff_, cr_);
   repr::CompatibilityStatusIR status =
-      CompareTUs(old_reader->GetModule(), new_reader->GetModule(),
+      CompareTUs(*old_reader->TakeModule(), *new_reader->TakeModule(),
                  ir_diff_dumper.get());
   if (!ir_diff_dumper->Dump()) {
     llvm::errs() << "Could not dump diff report\n";
