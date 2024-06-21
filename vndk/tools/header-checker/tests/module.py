@@ -847,7 +847,8 @@ TEST_MODULES = [
         version_script='integration/attribute/map.txt',
         export_include_dirs=['integration/attribute/include'],
         dumper_flags=['-output-format', 'Json'],
-        linker_flags=['-input-format', 'Json', '-output-format', 'Json'],
+        linker_flags=['-input-format', 'Json', '-output-format', 'Json',
+                      '-api', '35', '-filter-availability'],
         has_reference_dump=True,
     ),
 ]

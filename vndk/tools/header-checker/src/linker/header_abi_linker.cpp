@@ -119,9 +119,15 @@ static llvm::cl::opt<std::string> arch(
     "arch", llvm::cl::desc("<arch>"), llvm::cl::Optional,
     llvm::cl::cat(header_linker_category));
 
+static llvm::cl::opt<bool> filter_availability(
+    "filter-availability",
+    llvm::cl::desc("(Experimental) Filter the ABI annotated with availability "
+                   "attributes by -api."),
+    llvm::cl::Optional, llvm::cl::cat(header_linker_category));
+
 static llvm::cl::opt<bool> no_filter(
-    "no-filter", llvm::cl::desc("Do not filter any abi"), llvm::cl::Optional,
-    llvm::cl::cat(header_linker_category));
+    "no-filter", llvm::cl::desc("Do not filter any ABI by exported headers."),
+    llvm::cl::Optional, llvm::cl::cat(header_linker_category));
 
 static llvm::cl::opt<std::string> so_file(
     "so", llvm::cl::desc("<path to so file>"), llvm::cl::Optional,
@@ -155,12 +161,13 @@ class HeaderAbiLinker {
                   const std::vector<std::string> &exported_header_dirs,
                   repr::VersionScriptParser &version_script_parser,
                   const std::string &version_script, const std::string &so_file,
-                  const std::string &linked_dump)
+                  utils::ApiLevel api_level, const std::string &linked_dump)
       : dump_files_(dump_files),
         exported_header_dirs_(exported_header_dirs),
         version_script_parser_(version_script_parser),
         version_script_(version_script),
         so_file_(so_file),
+        api_level_(api_level),
         out_dump_name_(linked_dump) {}
 
   bool LinkAndDump();
@@ -207,6 +214,7 @@ class HeaderAbiLinker {
   repr::VersionScriptParser &version_script_parser_;
   const std::string &version_script_;
   const std::string &so_file_;
+  const utils::ApiLevel api_level_;
   const std::string &out_dump_name_;
 
   std::set<std::string> exported_headers_;
@@ -220,11 +228,17 @@ class HeaderAbiLinker {
 static void DeDuplicateAbiElementsThread(
     std::vector<std::string>::const_iterator dump_files_begin,
     std::vector<std::string>::const_iterator dump_files_end,
-    const std::set<std::string> *exported_headers,
+    const std::set<std::string> *exported_headers, utils::ApiLevel api_level,
     linker::ModuleMerger *merger) {
   for (auto it = dump_files_begin; it != dump_files_end; it++) {
-    std::unique_ptr<repr::IRReader> reader = repr::IRReader::CreateIRReader(
-        input_format, std::make_unique<repr::ModuleIR>(exported_headers));
+    std::unique_ptr<repr::ModuleIR> module_ir;
+    if (filter_availability) {
+      module_ir = std::make_unique<repr::ModuleIR>(exported_headers, api_level);
+    } else {
+      module_ir = std::make_unique<repr::ModuleIR>(exported_headers);
+    }
+    std::unique_ptr<repr::IRReader> reader =
+        repr::IRReader::CreateIRReader(input_format, std::move(module_ir));
     if (reader == nullptr) {
       llvm::errs() << "Failed to create IRReader for " << input_format << "\n";
       ::exit(1);
@@ -256,10 +270,10 @@ std::unique_ptr<linker::ModuleMerger> HeaderAbiLinker::ReadInputDumpFiles() {
       first_end_index = cnt;
     } else {
       thread_mergers.emplace_back();
-      threads.emplace_back(DeDuplicateAbiElementsThread,
-                           dump_files_.begin() + dump_files_index,
-                           dump_files_.begin() + dump_files_index + cnt,
-                           &exported_headers_, &thread_mergers.back());
+      threads.emplace_back(
+          DeDuplicateAbiElementsThread, dump_files_.begin() + dump_files_index,
+          dump_files_.begin() + dump_files_index + cnt, &exported_headers_,
+          api_level_, &thread_mergers.back());
     }
     dump_files_index += cnt;
   }
@@ -267,7 +281,7 @@ std::unique_ptr<linker::ModuleMerger> HeaderAbiLinker::ReadInputDumpFiles() {
 
   DeDuplicateAbiElementsThread(dump_files_.begin(),
                                dump_files_.begin() + first_end_index,
-                               &exported_headers_, merger.get());
+                               &exported_headers_, api_level_, merger.get());
 
   for (std::size_t i = 0; i < threads.size(); i++) {
     threads[i].join();
@@ -475,8 +489,7 @@ bool HeaderAbiLinker::ReadExportedSymbolsFromSharedObjectFile() {
   return true;
 }
 
-static bool InitializeVersionScriptParser(repr::VersionScriptParser &parser) {
-  utils::ApiLevelMap api_level_map;
+static bool LoadApiLevelMap(utils::ApiLevelMap &api_level_map) {
   if (!api_map.empty()) {
     std::ifstream stream(api_map);
     if (!stream) {
@@ -488,17 +501,15 @@ static bool InitializeVersionScriptParser(repr::VersionScriptParser &parser) {
       return false;
     }
   }
+  return true;
+}
 
-  std::optional<utils::ApiLevel> api_level = api_level_map.Parse(api);
-  if (!api_level) {
-    llvm::errs() << "-api must be \"current\", an integer, or a codename in "
-                    "-api-map\n";
-    return false;
-  }
-
+static bool InitializeVersionScriptParser(repr::VersionScriptParser &parser,
+                                          utils::ApiLevel api_level,
+                                          utils::ApiLevelMap &&api_level_map) {
   parser.SetArch(arch);
-  parser.SetApiLevel(api_level.value());
-  parser.SetApiLevelMap(api_level_map);
+  parser.SetApiLevel(api_level);
+  parser.SetApiLevelMap(std::move(api_level_map));
   for (auto &&version : excluded_symbol_versions) {
     parser.AddExcludedSymbolVersion(version);
   }
@@ -525,8 +536,21 @@ int main(int argc, const char **argv) {
     return -1;
   }
 
+  utils::ApiLevelMap api_level_map;
+  if (!LoadApiLevelMap(api_level_map)) {
+    return -1;
+  }
+
+  std::optional<utils::ApiLevel> api_level = api_level_map.Parse(api);
+  if (!api_level) {
+    llvm::errs() << "-api must be \"current\", an integer, or a codename in "
+                    "-api-map\n";
+    return -1;
+  }
+
   repr::VersionScriptParser version_script_parser;
-  if (!InitializeVersionScriptParser(version_script_parser)) {
+  if (!InitializeVersionScriptParser(version_script_parser, api_level.value(),
+                                     std::move(api_level_map))) {
     return -1;
   }
 
@@ -534,11 +558,11 @@ int main(int argc, const char **argv) {
     static_cast<std::vector<std::string> &>(exported_header_dirs).clear();
   }
 
-  HeaderAbiLinker Linker(dump_files, exported_header_dirs,
+  HeaderAbiLinker linker(dump_files, exported_header_dirs,
                          version_script_parser, version_script, so_file,
-                         linked_dump);
+                         api_level.value(), linked_dump);
 
-  if (!Linker.LinkAndDump()) {
+  if (!linker.LinkAndDump()) {
     llvm::errs() << "Failed to link and dump elements\n";
     return -1;
   }

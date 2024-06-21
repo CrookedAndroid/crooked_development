@@ -52,16 +52,6 @@
      "availability_attrs" :
      [
       {
-       "introduced_major" : 36
-      }
-     ],
-     "enum_field_value" : 0,
-     "name" : "ALPHABETICALLY_SMALLEST_IGNORED_FIELD"
-    },
-    {
-     "availability_attrs" :
-     [
-      {
        "deprecated_major" : 35
       }
      ],
@@ -71,26 +61,6 @@
     {
      "enum_field_value" : 2,
      "name" : "FIELD"
-    },
-    {
-     "availability_attrs" :
-     [
-      {
-       "obsoleted_major" : 35
-      }
-     ],
-     "enum_field_value" : 3,
-     "name" : "OBSOLETED"
-    },
-    {
-     "availability_attrs" :
-     [
-      {
-       "unavailable" : true
-      }
-     ],
-     "enum_field_value" : 4,
-     "name" : "UNAVAILABLE"
     }
    ],
    "linker_set_key" : "_ZTI38$ALPHABETICALLY_SMALLEST_IGNORED_FIELD",
@@ -123,34 +93,10 @@
    ],
    "return_type" : "_ZTIi",
    "source_file" : "development/vndk/tools/header-checker/tests/integration/attribute/include/base.h"
-  },
-  {
-   "availability_attrs" :
-   [
-    {
-     "introduced_major" : 36
-    }
-   ],
-   "function_name" : "ignored_func",
-   "linker_set_key" : "ignored_func",
-   "return_type" : "_ZTIi",
-   "source_file" : "development/vndk/tools/header-checker/tests/integration/attribute/include/base.h"
   }
  ],
  "global_vars" :
  [
-  {
-   "availability_attrs" :
-   [
-    {
-     "introduced_major" : 36
-    }
-   ],
-   "linker_set_key" : "ignored_var",
-   "name" : "ignored_var",
-   "referenced_type" : "_ZTIi",
-   "source_file" : "development/vndk/tools/header-checker/tests/integration/attribute/include/base.h"
-  },
   {
    "availability_attrs" :
    [
@@ -195,41 +141,11 @@
    "availability_attrs" :
    [
     {
-     "introduced_major" : 36
-    }
-   ],
-   "fields" :
-   [
-    {
-     "field_name" : "field",
-     "referenced_type" : "_ZTIi"
-    }
-   ],
-   "linker_set_key" : "_ZTI13IgnoredStruct",
-   "name" : "IgnoredStruct",
-   "size" : 4,
-   "source_file" : "development/vndk/tools/header-checker/tests/integration/attribute/include/base.h"
-  },
-  {
-   "alignment" : 4,
-   "availability_attrs" :
-   [
-    {
      "introduced_major" : 35
     }
    ],
    "fields" :
    [
-    {
-     "availability_attrs" :
-     [
-      {
-       "introduced_major" : 36
-      }
-     ],
-     "field_name" : "ignored_field",
-     "referenced_type" : "_ZTIi"
-    },
     {
      "field_name" : "field",
      "field_offset" : 32,
