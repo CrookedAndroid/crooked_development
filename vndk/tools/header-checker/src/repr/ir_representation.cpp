@@ -86,7 +86,8 @@ bool ModuleIR::AddElfSymbol(const ElfSymbolIR &elf_symbol) {
 
 
 void ModuleIR::AddFunction(FunctionIR &&function) {
-  if (!IsLinkableMessageInExportedHeaders(&function)) {
+  if (!IsLinkableMessageInExportedHeaders(&function) ||
+      !IsAvailable(function)) {
     return;
   }
   functions_.insert({function.GetLinkerSetKey(), std::move(function)});
@@ -94,7 +95,8 @@ void ModuleIR::AddFunction(FunctionIR &&function) {
 
 
 void ModuleIR::AddGlobalVariable(GlobalVarIR &&global_var) {
-  if (!IsLinkableMessageInExportedHeaders(&global_var)) {
+  if (!IsLinkableMessageInExportedHeaders(&global_var) ||
+      !IsAvailable(global_var)) {
     return;
   }
   global_variables_.insert(
@@ -102,10 +104,23 @@ void ModuleIR::AddGlobalVariable(GlobalVarIR &&global_var) {
 }
 
 
+void ModuleIR::FilterRecordFields(RecordTypeIR &record_type) const {
+  std::vector<RecordFieldIR> new_fields;
+  for (const RecordFieldIR &field : record_type.GetFields()) {
+    if (IsAvailable(field)) {
+      new_fields.emplace_back(field);
+    }
+  }
+  record_type.SetRecordFields(std::move(new_fields));
+}
+
+
 void ModuleIR::AddRecordType(RecordTypeIR &&record_type) {
-  if (!IsLinkableMessageInExportedHeaders(&record_type)) {
+  if (!IsLinkableMessageInExportedHeaders(&record_type) ||
+      !IsAvailable(record_type)) {
     return;
   }
+  FilterRecordFields(record_type);
   auto it = AddToMapAndTypeGraph(
       std::move(record_type), &record_types_, &type_graph_);
   const std::string &key = GetODRListMapKey(&(it->second));
@@ -124,10 +139,23 @@ void ModuleIR::AddFunctionType(FunctionTypeIR &&function_type) {
 }
 
 
+void ModuleIR::FilterEnumFields(EnumTypeIR &enum_type) const {
+  std::vector<EnumFieldIR> new_fields;
+  for (const EnumFieldIR &field : enum_type.GetFields()) {
+    if (IsAvailable(field)) {
+      new_fields.emplace_back(field);
+    }
+  }
+  enum_type.SetFields(std::move(new_fields));
+}
+
+
 void ModuleIR::AddEnumType(EnumTypeIR &&enum_type) {
-  if (!IsLinkableMessageInExportedHeaders(&enum_type)) {
+  if (!IsLinkableMessageInExportedHeaders(&enum_type) ||
+      !IsAvailable(enum_type)) {
     return;
   }
+  FilterEnumFields(enum_type);
   auto it = AddToMapAndTypeGraph(
       std::move(enum_type), &enum_types_, &type_graph_);
   const std::string &key = GetODRListMapKey(&(it->second));
@@ -232,6 +260,25 @@ bool ModuleIR::IsLinkableMessageInExportedHeaders(
   }
   return exported_headers_->find(linkable_message->GetSourceFile()) !=
          exported_headers_->end();
+}
+
+
+bool ModuleIR::IsAvailable(const HasAvailabilityAttrs &decl_ir) const {
+  if (!availability_.has_value()) {
+    return true;
+  }
+  for (const AvailabilityAttrIR &attr : decl_ir.GetAvailabilityAttrs()) {
+    if (attr.IsUnavailable()) {
+      return false;
+    }
+    if (attr.IsIntroduced() && availability_.value() < attr.GetIntroduced()) {
+      return false;
+    }
+    if (attr.IsObsoleted() && availability_.value() >= attr.GetObsoleted()) {
+      return false;
+    }
+  }
+  return true;
 }
 
 
