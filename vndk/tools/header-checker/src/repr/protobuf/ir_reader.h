@@ -19,7 +19,6 @@
 #include "repr/protobuf/abi_diff.h"
 #include "repr/protobuf/abi_dump.h"
 
-#include <set>
 #include <string>
 #include <vector>
 
@@ -38,9 +37,7 @@ class ProtobufIRReader : public IRReader {
 
 
  public:
-  ProtobufIRReader(const std::set<std::string> *exported_headers)
-      : IRReader(exported_headers) {}
-
+  ProtobufIRReader(ModuleIR &module_ir) : IRReader(module_ir) {}
 
  private:
   bool ReadDumpImpl(const std::string &dump_file) override;

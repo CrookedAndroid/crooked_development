@@ -31,15 +31,17 @@ namespace diff {
 
 
 repr::CompatibilityStatusIR HeaderAbiDiff::GenerateCompatibilityReport() {
+  repr::ModuleIR old_module;
+  repr::ModuleIR new_module;
   std::unique_ptr<repr::IRReader> old_reader =
-      repr::IRReader::CreateIRReader(text_format_old_);
+      repr::IRReader::CreateIRReader(text_format_old_, old_module);
   if (!old_reader || !old_reader->ReadDump(old_dump_)) {
     llvm::errs() << "Failed to read old ABI dump: " << old_dump_ << "\n";
     ::exit(1);
   }
 
   std::unique_ptr<repr::IRReader> new_reader =
-      repr::IRReader::CreateIRReader(text_format_new_);
+      repr::IRReader::CreateIRReader(text_format_new_, new_module);
   if (!new_reader || !new_reader->ReadDump(new_dump_)) {
     llvm::errs() << "Failed to read new ABI dump: " << new_dump_ << "\n";
     ::exit(1);
@@ -48,8 +50,7 @@ repr::CompatibilityStatusIR HeaderAbiDiff::GenerateCompatibilityReport() {
   std::unique_ptr<repr::IRDiffDumper> ir_diff_dumper =
       repr::IRDiffDumper::CreateIRDiffDumper(text_format_diff_, cr_);
   repr::CompatibilityStatusIR status =
-      CompareTUs(old_reader->GetModule(), new_reader->GetModule(),
-                 ir_diff_dumper.get());
+      CompareTUs(old_module, new_module, ir_diff_dumper.get());
   if (!ir_diff_dumper->Dump()) {
     llvm::errs() << "Could not dump diff report\n";
     ::exit(1);

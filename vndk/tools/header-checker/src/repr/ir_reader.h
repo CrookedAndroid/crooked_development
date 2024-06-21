@@ -18,7 +18,6 @@
 #include "repr/ir_representation.h"
 
 #include <memory>
-#include <set>
 #include <string>
 
 
@@ -28,30 +27,20 @@ namespace repr {
 
 class IRReader {
  public:
-  static std::unique_ptr<IRReader> CreateIRReader(
-      TextFormatIR text_format,
-      const std::set<std::string> *exported_headers = nullptr);
+  static std::unique_ptr<IRReader> CreateIRReader(TextFormatIR text_format,
+                                                  ModuleIR &module_ir);
 
-  IRReader(const std::set<std::string> *exported_headers)
-      : module_(new ModuleIR(exported_headers)) {}
+  IRReader(ModuleIR &module_ir) : module_(module_ir) {}
 
   virtual ~IRReader() {}
 
   bool ReadDump(const std::string &dump_file);
 
-  ModuleIR &GetModule() {
-    return *module_;
-  }
-
-  std::unique_ptr<ModuleIR> TakeModule() {
-    return std::move(module_);
-  }
-
  private:
   virtual bool ReadDumpImpl(const std::string &dump_file) = 0;
 
  protected:
-  std::unique_ptr<ModuleIR> module_;
+  ModuleIR &module_;
 };
 
 

@@ -221,11 +221,10 @@ void HeaderASTConsumer::HandleTranslationUnit(clang::ASTContext &ctx) {
                                                      options_.root_dirs_),
                        options_.root_dirs_);
 
-  std::unique_ptr<repr::ModuleIR> module(
-      new repr::ModuleIR(nullptr /*FIXME*/));
+  repr::ModuleIR module;
 
   HeaderASTVisitor v(options_, mangle_contextp.get(), &ctx, cip_,
-                     translation_unit, module.get(), &ast_caches);
+                     translation_unit, &module, &ast_caches);
   if (!v.TraverseDecl(translation_unit)) {
     llvm::errs() << "ABI extraction failed\n";
     ::exit(1);
@@ -234,7 +233,7 @@ void HeaderASTConsumer::HandleTranslationUnit(clang::ASTContext &ctx) {
   std::unique_ptr<repr::IRDumper> ir_dumper =
       repr::IRDumper::CreateIRDumper(options_.text_format_,
                                      options_.dump_name_);
-  if (!ir_dumper->Dump(*module)) {
+  if (!ir_dumper->Dump(module)) {
     llvm::errs() << "Serialization failed\n";
     ::exit(1);
   }
