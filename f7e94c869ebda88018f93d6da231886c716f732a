@@ -107,6 +107,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d59ed00_4ae3d171",
+        "filename": "tools/cargo_embargo/src/cargo/cargo_out.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1807569
+      },
+      "writtenOn": "2024-06-25T04:38:51Z",
+      "side": 1,
+      "message": "Good idea, I took a stab at it, LMK what you think.",
+      "parentUuid": "767712a1_bbb602ca",
+      "revId": "f7e94c869ebda88018f93d6da231886c716f732a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fdadba6_d4b0de55",
