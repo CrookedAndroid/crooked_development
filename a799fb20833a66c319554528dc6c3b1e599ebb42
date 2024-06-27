@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2af01c2e_1b93d126",
+        "filename": "vndk/tools/header-checker/src/repr/json/ir_dumper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-06-27T19:16:35Z",
+      "side": 1,
+      "message": "NOTE: instead of marking each and every function with `static`, you could\u0027ve enclosed all these methods in an anonymous namespace and it would have the same un-exporting effect.",
+      "revId": "a799fb20833a66c319554528dc6c3b1e599ebb42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
