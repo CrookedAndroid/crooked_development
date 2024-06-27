@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a2d8e9_591d45ee",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 1122,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-06-27T15:15:54Z",
+      "side": 1,
+      "message": "This comment looks out of date, there\u0027s no longer a fallback to lib_name here is there?",
+      "revId": "948e27b3744283e6641b88445b53128d16fc0ecb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
