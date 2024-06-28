@@ -16,6 +16,24 @@
       "message": "This comment looks out of date, there\u0027s no longer a fallback to lib_name here is there?",
       "revId": "948e27b3744283e6641b88445b53128d16fc0ecb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22dea5e6_693b9226",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 1122,
+      "author": {
+        "id": 1807569
+      },
+      "writtenOn": "2024-06-28T21:17:29Z",
+      "side": 1,
+      "message": "Good catch, thanks!",
+      "parentUuid": "f8a2d8e9_591d45ee",
+      "revId": "948e27b3744283e6641b88445b53128d16fc0ecb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
