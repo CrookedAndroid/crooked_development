@@ -40,8 +40,7 @@ public:
 
 class ModuleMerger {
 public:
-  ModuleMerger(const std::set<std::string> *exported_headers)
-      : module_(new repr::ModuleIR(exported_headers)) {}
+  ModuleMerger() : module_(new repr::ModuleIR()) {}
 
   const repr::ModuleIR &GetModule() {
     return *module_;
