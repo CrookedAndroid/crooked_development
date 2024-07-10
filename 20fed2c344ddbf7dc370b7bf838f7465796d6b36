@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea5a9c8_c1f89618",
+        "filename": "vndk/tools/header-checker/src/repr/ir_reader.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-07-10T14:24:04Z",
+      "side": 0,
+      "message": "I think it\u0027s anti pattern for a class object field to point to a mutable reference that is also not owned by the object. It means some other part of the program, outside of this class, would have to do bookkeeping. It\u0027s not straightforward and can easily lead to read-before-write or use-after-free type bugs. I\u0027d rather we keep this `GetModule` pattern so that the object ownership is described clearly.\n\nFor example,\n```\n// Construct IRReader, while optionally transfer-in an existing ModuleIR object.\n// If module_ir is nullptr, then construct one with the default constructor.\nstatic std::unique_ptr\u003cIRReader\u003e CreateIRReader(\n      TextFormatIR text_format,\n      std::unique_ptr\u003cModuleIR\u003e module_ir \u003d nullptr) {\n  return CreateProtobufIRReader(module_ir ? module_ir : make_unique\u003cModuleIR\u003e());\n}\n      \n// After ReadDump() is called, call GetModule() to release the ownership of the embedded ModuleIR.\nstd::unique_ptr\u003cModuleIR\u003e GetModule {\n  return std::move(module_);\n}\n```",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "20fed2c344ddbf7dc370b7bf838f7465796d6b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
