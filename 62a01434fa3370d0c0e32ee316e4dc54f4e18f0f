@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca3928b3_b957a8f5",
+        "filename": "vndk/tools/header-checker/src/repr/ir_reader.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-07-11T04:48:33Z",
+      "side": 1,
+      "message": "I think you can make the constructor receive an \u0026\u0026 reference directly\n```suggestion\n  IRReader(std::unique_ptr\u003cModuleIR\u003e\u0026\u0026 module_ir) : module_(module_ir) {}\n```",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "62a01434fa3370d0c0e32ee316e4dc54f4e18f0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "214eae81_e62c6960",
+        "filename": "vndk/tools/header-checker/src/repr/json/ir_reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-07-11T04:48:33Z",
+      "side": 1,
+      "message": "ditto, can make the argument type \u0026\u0026 so no need to call std::move() so many times\n```suggestion\n\nstd::unique_ptr\u003cIRReader\u003e CreateJsonIRReader(std::unique_ptr\u003cModuleIR\u003e\u0026\u0026 module_ir) {\n  return std::make_unique\u003cJsonIRReader\u003e(module_ir);\n}\n```",
+      "range": {
+        "startLine": 446,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 1
+      },
+      "revId": "62a01434fa3370d0c0e32ee316e4dc54f4e18f0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c354dd9_485639e2",
+        "filename": "vndk/tools/header-checker/src/repr/json/ir_reader.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-07-11T04:48:33Z",
+      "side": 1,
+      "message": "this too, can just receive a \u0026\u0026 reference instead",
+      "revId": "62a01434fa3370d0c0e32ee316e4dc54f4e18f0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
