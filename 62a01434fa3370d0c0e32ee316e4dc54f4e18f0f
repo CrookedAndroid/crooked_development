@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "352b28cd_99a37846",
+        "filename": "vndk/tools/header-checker/src/repr/ir_reader.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-07-11T07:02:11Z",
+      "side": 1,
+      "message": "No. It results in a compilation error. An rvalue reference variable must be explicitly cast to an rvalue.\n\ndevelopment/vndk/tools/header-checker/src/repr/ir_reader.h:36:9: error: call to implicitly-deleted copy constructor of \u0027std::unique_ptr\u003cModuleIR\u003e\u0027",
+      "parentUuid": "ca3928b3_b957a8f5",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "62a01434fa3370d0c0e32ee316e4dc54f4e18f0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "214eae81_e62c6960",
