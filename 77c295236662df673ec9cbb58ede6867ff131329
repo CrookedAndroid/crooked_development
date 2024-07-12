@@ -34,6 +34,24 @@
       ],
       "revId": "77c295236662df673ec9cbb58ede6867ff131329",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9253c0dd_296af8c7",
+        "filename": "vndk/tools/header-checker/src/linker/header_abi_linker.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-07-12T07:48:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cebbc86_6d549a93",
+      "revId": "77c295236662df673ec9cbb58ede6867ff131329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
