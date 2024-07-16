@@ -198,7 +198,7 @@ class HeaderCheckerTest(unittest.TestCase):
 
     def test_libgolden_cpp_add_function(self):
         self.prepare_and_run_abi_diff_all_archs(
-            "libgolden_cpp", "libgolden_cpp_add_function", 4)
+            "libgolden_cpp", "libgolden_cpp_add_function", 6)
 
     def test_libgolden_cpp_add_function_allow_extension(self):
         self.prepare_and_run_abi_diff_all_archs(
@@ -208,7 +208,7 @@ class HeaderCheckerTest(unittest.TestCase):
     def test_libgolden_cpp_add_function_and_elf_symbol(self):
         self.prepare_and_run_abi_diff_all_archs(
             "libgolden_cpp", "libgolden_cpp_add_function_and_unexported_elf",
-            4)
+            6)
 
     def test_libgolden_cpp_fabricated_function_ast_removed_diff(self):
         self.prepare_and_run_abi_diff_all_archs(
@@ -221,7 +221,7 @@ class HeaderCheckerTest(unittest.TestCase):
 
     def test_libgolden_cpp_add_global_variable(self):
         self.prepare_and_run_abi_diff_all_archs(
-            "libgolden_cpp", "libgolden_cpp_add_global_variable", 4)
+            "libgolden_cpp", "libgolden_cpp_add_global_variable", 6)
 
     def test_libgolden_cpp_change_global_var_access(self):
         self.prepare_and_run_abi_diff_all_archs(
