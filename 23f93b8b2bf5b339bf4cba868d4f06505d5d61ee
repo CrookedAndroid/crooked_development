@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d292d226_6e65c500",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-07-17T18:01:23Z",
+      "side": 1,
+      "message": "This only propagates one level deep. What happens if this crate depends on X which in *turn* depends on `proc-macro2`? I failed to find any crate that depends on `syn` (a solid example of X) and doesn\u0027t *also* depend on `proc-macro2`, but it\u0027s not impossible.\n\nYou might be able to solve this more completely by pulling `\"resolve\"` from the metadata.",
+      "range": {
+        "startLine": 932,
+        "startChar": 0,
+        "endLine": 940,
+        "endChar": 13
+      },
+      "revId": "23f93b8b2bf5b339bf4cba868d4f06505d5d61ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
