@@ -22,6 +22,30 @@
       },
       "revId": "23f93b8b2bf5b339bf4cba868d4f06505d5d61ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e9fd5b2_02a37c14",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-07-17T18:14:42Z",
+      "side": 1,
+      "message": "Ah that\u0027s a good idea! One example I found is `libdarling` which depends on `libdarling_core` which has a `libproc_macro2` dependency.\n\nLet\u0027s handle this as a future improvement. In the interim there\u0027s only a handful of instances like this and we can explicitly set `host_cross_supported: false` in their `cargo_embargo.json` files.",
+      "parentUuid": "d292d226_6e65c500",
+      "range": {
+        "startLine": 932,
+        "startChar": 0,
+        "endLine": 940,
+        "endChar": 13
+      },
+      "revId": "23f93b8b2bf5b339bf4cba868d4f06505d5d61ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
