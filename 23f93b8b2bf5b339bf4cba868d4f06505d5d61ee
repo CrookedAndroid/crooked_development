@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67477c59_efae240b",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2024-07-18T16:23:38Z",
+      "side": 1,
+      "message": "i don\u0027t feel strongly, but it probably makes more sense to set this in `external/rust/crates/proc-macro2/cargo_embargo.json`, right? fine to cleanup later if it makes sense",
+      "range": {
+        "startLine": 938,
+        "startChar": 0,
+        "endLine": 939,
+        "endChar": 59
+      },
+      "revId": "23f93b8b2bf5b339bf4cba868d4f06505d5d61ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d292d226_6e65c500",
