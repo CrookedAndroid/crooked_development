@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e63a9f42_5ffacbf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2024-07-18T16:27:16Z",
+      "side": 1,
+      "message": "consider adding a test case to https://cs.android.com/android/platform/superproject/main/+/main:development/tools/cargo_embargo/testdata/",
+      "revId": "d94fcdf3ec07dcb82412c457cb2c95c20add1fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
