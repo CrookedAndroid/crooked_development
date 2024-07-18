@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68e21b33_af975c02",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2024-07-18T16:40:56Z",
+      "side": 1,
+      "message": "I definitely agree with automating the dependency check. Now that you mention it, thinking about it as checking for `proc-macro2` in the whole build graph, including the root, it makes sense to explicitly check `crate_.package_name \u003d\u003d \"proc-macro2\"`, so I\u0027ll retract my thought",
+      "parentUuid": "1666e005_b12e6a74",
+      "range": {
+        "startLine": 938,
+        "startChar": 0,
+        "endLine": 939,
+        "endChar": 59
+      },
+      "revId": "23f93b8b2bf5b339bf4cba868d4f06505d5d61ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d292d226_6e65c500",
