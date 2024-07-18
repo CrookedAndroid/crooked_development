@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1666e005_b12e6a74",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2024-07-18T16:31:00Z",
+      "side": 1,
+      "message": "Since we have the check specifically for `proc_macro2` above, I figured it\u0027d make sense to also include explicitly setting proc-macro2 to `host_cross_supported: false` here. \n\nI don\u0027t feel strongly about it either though. My goal was to simplify things for crate importers so they wouldn\u0027t have to know they need to explicitly set `host_cross_supported: false` if proc-macro2 is a dependency.",
+      "parentUuid": "67477c59_efae240b",
+      "range": {
+        "startLine": 938,
+        "startChar": 0,
+        "endLine": 939,
+        "endChar": 59
+      },
+      "revId": "23f93b8b2bf5b339bf4cba868d4f06505d5d61ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d292d226_6e65c500",
