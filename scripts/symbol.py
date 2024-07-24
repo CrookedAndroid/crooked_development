@@ -56,7 +56,6 @@ ARCH = None
 # These are private. Do not access them from other modules.
 _CACHED_TOOLCHAIN = None
 _CACHED_TOOLCHAIN_ARCH = None
-_CACHED_CXX_FILT = None
 
 # Caches for symbolized information.
 _SYMBOL_INFORMATION_ADDR2LINE_CACHE = {}
@@ -140,21 +139,38 @@ def ToolPath(tool, toolchain=None):
   """Return a fully-qualified path to the specified tool"""
   if not toolchain:
     toolchain = FindToolchain()
-  return os.path.join(toolchain, tool)
+  return glob.glob(os.path.join(toolchain, "*-" + tool))[0]
 
 
 def FindToolchain():
   """Returns the toolchain matching ARCH."""
-
   global _CACHED_TOOLCHAIN, _CACHED_TOOLCHAIN_ARCH
   if _CACHED_TOOLCHAIN is not None and _CACHED_TOOLCHAIN_ARCH == ARCH:
     return _CACHED_TOOLCHAIN
 
-  llvm_binutils_dir = ANDROID_BUILD_TOP + "/prebuilts/clang/host/linux-x86/llvm-binutils-stable/";
-  if not os.path.exists(llvm_binutils_dir):
-    raise Exception("Could not find llvm tool chain directory %s" % (llvm_binutils_dir))
+  # We use slightly different names from GCC, and there's only one toolchain
+  # for x86/x86_64. Note that these are the names of the top-level directory
+  # rather than the _different_ names used lower down the directory hierarchy!
+  gcc_dir = ARCH
+  if gcc_dir == "arm64":
+    gcc_dir = "aarch64"
+  elif gcc_dir == "mips64":
+    gcc_dir = "mips"
+  elif gcc_dir == "x86_64":
+    gcc_dir = "x86"
 
-  _CACHED_TOOLCHAIN = llvm_binutils_dir
+  os_name = platform.system().lower();
+
+  available_toolchains = glob.glob("%s/prebuilts/gcc/%s-x86/%s/*-linux-*/bin/" % (ANDROID_BUILD_TOP, os_name, gcc_dir))
+  if len(available_toolchains) == 0:
+    raise Exception("Could not find tool chain for %s" % (ARCH))
+
+  toolchain = sorted(available_toolchains)[-1]
+
+  if not os.path.exists(ToolPath("addr2line", toolchain)):
+    raise Exception("No addr2line for %s" % (toolchain))
+
+  _CACHED_TOOLCHAIN = toolchain
   _CACHED_TOOLCHAIN_ARCH = ARCH
   print("Using %s toolchain from: %s" % (_CACHED_TOOLCHAIN_ARCH, _CACHED_TOOLCHAIN))
   return _CACHED_TOOLCHAIN
@@ -206,7 +222,7 @@ def SymbolInformationForSet(lib, unique_addrs):
   if not lib:
     return None
 
-  addr_to_line = CallLlvmSymbolizerForSet(lib, unique_addrs)
+  addr_to_line = CallAddr2LineForSet(lib, unique_addrs)
   if not addr_to_line:
     return None
 
@@ -231,7 +247,7 @@ def SymbolInformationForSet(lib, unique_addrs):
   return result
 
 
-def CallLlvmSymbolizerForSet(lib, unique_addrs):
+def CallAddr2LineForSet(lib, unique_addrs):
   """Look up line and symbol information for a set of addresses.
 
   Args:
@@ -282,8 +298,8 @@ def CallLlvmSymbolizerForSet(lib, unique_addrs):
   if os.path.isdir(symbols):
     return None
 
-  cmd = [ToolPath("llvm-symbolizer"), "--functions", "--inlines",
-      "--demangle", "--obj=" + symbols, "--output-style=GNU"]
+  cmd = [ToolPath("addr2line"), "--functions", "--inlines",
+      "--demangle", "--exe=" + symbols]
   child = _PIPE_ADDR2LINE_CACHE.GetProcess(cmd)
 
   for addr in addrs:
@@ -294,14 +310,18 @@ def CallLlvmSymbolizerForSet(lib, unique_addrs):
       first = True
       while True:
         symbol = child.stdout.readline().strip()
-        if not symbol:
-          break
+        if symbol == "??":
+          symbol = None
         location = child.stdout.readline().strip()
+        if location == "??:0" or location == "??:?":
+          location = None
+        if symbol is None and location is None:
+          break
         records.append((symbol, location))
         if first:
           # Write a blank line as a sentinel so we know when to stop
           # reading inlines from the output.
-          # The blank line will cause llvm-symbolizer to emit a blank line.
+          # The blank line will cause addr2line to emit "??\n??:0\n".
           child.stdin.write("\n")
           first = False
     except IOError as e:
@@ -371,7 +391,7 @@ def CallObjdumpForSet(lib, unique_addrs):
 
   start_addr_dec = str(StripPC(int(addrs[0], 16)))
   stop_addr_dec = str(StripPC(int(addrs[-1], 16)) + 8)
-  cmd = [ToolPath("llvm-objdump"),
+  cmd = [ToolPath("objdump"),
          "--section=.text",
          "--demangle",
          "--disassemble",
@@ -435,17 +455,7 @@ def CallCppFilt(mangled_symbol):
   if mangled_symbol in _SYMBOL_DEMANGLING_CACHE:
     return _SYMBOL_DEMANGLING_CACHE[mangled_symbol]
 
-  # TODO: Replace with llvm-cxxfilt when available.
-  global _CACHED_CXX_FILT
-  if not _CACHED_CXX_FILT:
-    os_name = platform.system().lower()
-    toolchains = glob.glob("%s/prebuilts/gcc/%s-*/host/*-linux-*/bin/*c++filt" %
-                           (ANDROID_BUILD_TOP, os_name))
-    if not toolchains:
-      raise Exception("Could not find gcc c++filt tool")
-    _CACHED_CXX_FILT = sorted(toolchains)[-1]
-
-  cmd = [_CACHED_CXX_FILT]
+  cmd = [ToolPath("c++filt")]
   process = _PIPE_CPPFILT_CACHE.GetProcess(cmd)
   process.stdin.write(mangled_symbol)
   process.stdin.write("\n")
