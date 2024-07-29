@@ -1,0 +1,11 @@
+{
+  "libc": [
+    {
+      "target_version": "current",
+      "ignore_linker_set_keys": [
+        "_ZTI7siginfo"
+      ]
+    }
+  ]
+}
+

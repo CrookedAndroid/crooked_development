@@ -124,6 +124,13 @@ def copy_reference_dump(lib_path, reference_dump_dir):
     return ref_dump_path
 
 
+# TODO(b/355612961): Remove this workaround
+def copy_config_json(json_path, reference_dump_dir):
+    os.makedirs(reference_dump_dir, exist_ok=True)
+    shutil.copy(json_path, reference_dump_dir)
+    print(f'Created config.json at {reference_dump_dir}')
+
+
 def run_header_abi_dumper(input_path, output_path, cflags=tuple(),
                           export_include_dirs=tuple(), flags=tuple()):
     """Run header-abi-dumper to dump ABI from `input_path` and the output is
