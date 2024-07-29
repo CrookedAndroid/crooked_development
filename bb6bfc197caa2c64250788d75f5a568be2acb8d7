@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a2ed78_eb6d92ad",
+        "filename": "vndk/tools/header-checker/utils/create_reference_dumps.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-07-29T11:29:33Z",
+      "side": 1,
+      "message": "The finalization script `make create_reference_dumps` and executes it. The path may not work. Since this is a workaround, you can hardcode the JSON object here.\n\n```\n    reference_dump_dir \u003d os.path.join(ref_dump_dir_stem, \u0027source-based\u0027)\n    config_path \u003d os.path.join(reference_dump_dir, \u0027config.json\u0027)\n    if os.path.exists(config_path):\n        return\n\n    config_json \u003d {\n        \u0027libc\u0027: [\n            {\n                \u0027target_version\u0027: \u0027current\u0027,\n                \u0027ignore_linker_set_keys\u0027: [\n                    \u0027_ZTI7siginfo\u0027\n                ]\n            }\n        ]\n    }\n    os.makedirs(reference_dump_dir, exist_ok\u003dTrue)\n    with open(config_path, \u0027w\u0027) as config_file:\n        json.dump(config_json, config_file, indent\u003d2)\n    print(f\u0027Created {config_path}\u0027)\n```",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 20
+      },
+      "revId": "bb6bfc197caa2c64250788d75f5a568be2acb8d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
