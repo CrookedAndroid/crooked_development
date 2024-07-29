@@ -7,7 +7,8 @@ import time
 from utils import (
     AOSP_DIR, SOURCE_ABI_DUMP_EXT_END, SO_EXT, BuildTarget, Arch,
     copy_reference_dump, find_lib_lsdumps, get_build_vars,
-    make_libraries, make_targets, read_lsdump_paths)
+    make_libraries, make_targets, read_lsdump_paths,
+    copy_config_json)
 
 
 PRODUCTS_DEFAULT = ['aosp_arm', 'aosp_arm64', 'aosp_x86', 'aosp_x86_64']
@@ -90,6 +91,20 @@ def find_and_copy_lib_lsdumps(get_ref_dump_dir_stem, arch, libs,
     return num_created
 
 
+# TODO(b/355612961): As a config.json file to each dump directory to ignore
+# errors. Once we have solution, this must be removed.
+def add_workaround_config_json(get_ref_dump_dir_stem, tags, arch):
+    if 'LLNDK' not in tags:
+        return
+
+    config_json_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),
+                                    'config.json')
+    ref_dump_dir_stem = get_ref_dump_dir_stem(tag_to_dir_name('LLNDK'),
+                                                  arch.get_arch_str())
+    copy_config_json(
+        config_json_path, os.path.join(ref_dump_dir_stem, 'source-based'))
+
+
 def create_source_abi_reference_dumps(args, get_ref_dump_dir_stem,
                                       lsdump_paths, arches):
     num_libs_copied = 0
@@ -100,6 +115,7 @@ def create_source_abi_reference_dumps(args, get_ref_dump_dir_stem,
 
         num_libs_copied += find_and_copy_lib_lsdumps(
             get_ref_dump_dir_stem, arch, args.libs, lsdump_paths)
+        add_workaround_config_json(get_ref_dump_dir_stem, args.include_tags, arch)
     return num_libs_copied
 
 
