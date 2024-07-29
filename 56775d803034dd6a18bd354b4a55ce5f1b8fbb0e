@@ -46,6 +46,30 @@
       },
       "revId": "56775d803034dd6a18bd354b4a55ce5f1b8fbb0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e875da1_5b8b8053",
+        "filename": "tools/external_crates/crate_health/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-07-29T16:47:32Z",
+      "side": 1,
+      "message": "Ok, that\u0027s fine. I guess we don\u0027t have this particular message elsewhere, where it could be confused that we were (not) expecting a diff.",
+      "parentUuid": "38eef4a6_f62189d8",
+      "range": {
+        "startLine": 217,
+        "startChar": 55,
+        "endLine": 217,
+        "endChar": 81
+      },
+      "revId": "56775d803034dd6a18bd354b4a55ce5f1b8fbb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
