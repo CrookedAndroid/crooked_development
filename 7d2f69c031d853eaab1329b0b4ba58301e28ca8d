@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "638fd3b7_191893e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1954223
+      },
+      "writtenOn": "2024-07-29T09:25:37Z",
+      "side": 1,
+      "message": "out of curiosity, why is this cl fixing the build if trace_processor/protos.ts is the only file being changed?",
+      "revId": "7d2f69c031d853eaab1329b0b4ba58301e28ca8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
