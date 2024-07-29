@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e002ed_00d2d37b",
+        "filename": "tools/external_crates/crate_health/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-07-29T16:31:40Z",
+      "side": 1,
+      "message": "Is this actually reachable? We already have that the bp was unchanged.",
+      "range": {
+        "startLine": 217,
+        "startChar": 55,
+        "endLine": 217,
+        "endChar": 81
+      },
+      "revId": "56775d803034dd6a18bd354b4a55ce5f1b8fbb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
