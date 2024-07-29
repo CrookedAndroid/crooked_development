@@ -22,6 +22,30 @@
       },
       "revId": "56775d803034dd6a18bd354b4a55ce5f1b8fbb0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38eef4a6_f62189d8",
+        "filename": "tools/external_crates/crate_health/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-07-29T16:37:04Z",
+      "side": 1,
+      "message": "Probably not, but not guaranteed by the type system, so I\u0027d rather do this than \"unwrap_unchecked\"",
+      "parentUuid": "29e002ed_00d2d37b",
+      "range": {
+        "startLine": 217,
+        "startChar": 55,
+        "endLine": 217,
+        "endChar": 81
+      },
+      "revId": "56775d803034dd6a18bd354b4a55ce5f1b8fbb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
