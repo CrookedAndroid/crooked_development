@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f31db2c5_90e93cf2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-07-30T00:52:36Z",
+      "side": 1,
+      "message": "yeah it should\u0027ve never been necessary to build bp2build in order to use queryview. You just need to build the `queryview` target, which you do.",
+      "revId": "5acdc0b601f1c5adb303cfde50e0f04296f6a9ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
