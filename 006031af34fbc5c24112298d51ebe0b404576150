@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b35d20_2c420194",
+        "filename": "vndk/tools/header-checker/utils/create_reference_dumps.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-07-30T04:01:56Z",
+      "side": 1,
+      "message": "```suggestion\n# TODO(b/355612961): Add a config.json file to each dump directory to ignore\n```",
+      "range": {
+        "startLine": 94,
+        "startChar": 21,
+        "endLine": 94,
+        "endChar": 23
+      },
+      "revId": "006031af34fbc5c24112298d51ebe0b404576150",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "863a6721_2e834015",
+        "filename": "vndk/tools/header-checker/utils/create_reference_dumps.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-07-30T04:01:56Z",
+      "side": 1,
+      "message": "```suggestion\n    ref_dump_dir_stem \u003d get_ref_dump_dir_stem(tag_to_dir_name(\u0027LLNDK\u0027),\n                                              arch.get_arch_str())\n```",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 70
+      },
+      "revId": "006031af34fbc5c24112298d51ebe0b404576150",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
