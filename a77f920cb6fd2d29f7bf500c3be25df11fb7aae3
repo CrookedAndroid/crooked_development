@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5b461964_e2fd46d5",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-08-01T16:20:28Z",
+      "side": 1,
+      "message": "I guess so, we should update this comment.",
+      "parentUuid": "80cab0f7_a1f5444f",
+      "revId": "a77f920cb6fd2d29f7bf500c3be25df11fb7aae3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8d8029f3_85e1d0e6",
         "filename": "tools/cargo_embargo/src/main.rs",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2024-08-01T16:17:42Z",
       "side": 1,
       "message": "tangentially related musings: puting the stderr error in the metadata file was kind of a lazy \"fail if there is unexpected stderr output\". maybe it is a nicer user experience to save stderr to a buffer and fail gracefully when non-empty",
+      "revId": "a77f920cb6fd2d29f7bf500c3be25df11fb7aae3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ad2de65_4e11a5c9",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-08-01T16:20:28Z",
+      "side": 1,
+      "message": "In the cases I\u0027ve seen recently it has been warnings that `.cargo/config` should be renamed to `.cargo/config.toml`, which aren\u0027t particularly useful or actionable to the person running `cargo_embargo`. After this change they will be shown on the console, which seems reasonable.",
+      "parentUuid": "8d8029f3_85e1d0e6",
       "revId": "a77f920cb6fd2d29f7bf500c3be25df11fb7aae3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
