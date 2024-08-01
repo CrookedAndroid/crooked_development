@@ -13,6 +13,7 @@
 // limitations under the License.
 
 use std::{
+    collections::{BTreeMap, BTreeSet},
     fs::{create_dir, remove_dir_all, remove_file, rename, write},
     path::{Path, PathBuf},
     process::Command,
@@ -26,7 +27,10 @@ use crate_health::{
     NameAndVersionMap, NameAndVersionRef, NamedAndVersioned, PseudoCrate, RepoPath, VersionMatch,
 };
 use glob::glob;
+use itertools::Itertools;
 use semver::Version;
+use serde_json::Value;
+use tempfile::tempdir;
 
 #[derive(Parser)]
 struct Cli {
@@ -65,6 +69,10 @@ enum Cmd {
     PreuploadCheck {
         /// List of changed files
         files: Vec<String>,
+
+        /// The commit hash.
+        #[arg(long, required = true)]
+        hash: String,
     },
 }
 
@@ -176,11 +184,59 @@ fn main() -> Result<()> {
                 src_dir.join("Android.bp"),
                 "// This crate has been migrated to external/rust/android-crates-io.\n",
             )?;
-
             Ok(())
         }
         Cmd::Regenerate { crate_name } => regenerate(&args.repo_root, &crate_name),
-        Cmd::PreuploadCheck { files: _ } => Ok(()),
+        Cmd::PreuploadCheck { files, hash } => {
+            let mut changed_vendored_crates: BTreeSet<String> = BTreeSet::new();
+            let mut changed_android_crates: BTreeSet<String> = BTreeSet::new();
+            let mut cargo_toml_deps: BTreeSet<String> = BTreeSet::new();
+
+            for file in files {
+                if file == "pseudo_crate/Cargo.toml" {
+                    println!("Cargo.toml changed at commit {}", hash);
+                    let new_deps = get_deps(&get_metadata(&hash)?)
+                        .ok_or(anyhow!("Failed to parse JSON metadata"))?;
+                    let old_deps = get_deps(&get_metadata(&format!("{}~1", hash))?)
+                        .ok_or(anyhow!("Failed to parse JSON metadata"))?;
+                    println!("old deps: {:?}", old_deps);
+                    println!("new deps: {:?}", new_deps);
+                    let added_deps = new_deps
+                        .keys()
+                        .filter(|k| !old_deps.contains_key(*k))
+                        .cloned()
+                        .collect::<Vec<_>>();
+                    let deleted_deps = old_deps
+                        .keys()
+                        .filter(|k| !new_deps.contains_key(*k))
+                        .cloned()
+                        .collect::<Vec<_>>();
+                    let changed_deps = new_deps
+                        .iter()
+                        .filter(|(k, v)| old_deps.get(*k).is_some_and(|vv| *v != vv))
+                        .map(|(k, v)| k.clone())
+                        .collect::<Vec<_>>();
+                    println!("added deps: {}", added_deps.iter().join(", "));
+                    println!("deleted deps: {}", deleted_deps.iter().join(", "));
+                    println!("changed deps: {}", changed_deps.iter().join(", "));
+                }
+                let path = PathBuf::from(file);
+                let components = path.components().collect::<Vec<_>>();
+                if path.starts_with("pseudo_crate/vendor") && components.len() > 3 {
+                    changed_vendored_crates
+                        .insert(components[2].as_os_str().to_string_lossy().to_string());
+                } else if path.starts_with("crates/") && components.len() > 2 {
+                    changed_android_crates
+                        .insert(components[1].as_os_str().to_string_lossy().to_string());
+                }
+            }
+            println!("Changed vendored crates");
+            println!("  {}", changed_vendored_crates.iter().join("\n  "));
+            println!("Changed Android crates");
+            println!("  {}", changed_android_crates.iter().join("\n  "));
+            Err(anyhow!("Fake error"))
+            // Ok(())
+        }
     }
 }
 
@@ -433,4 +489,39 @@ pub fn regenerate(repo_root: &impl AsRef<Path>, crate_name: &str) -> Result<()> 
     rename(pair.dest.staging_path().abs(), &android_crate_dir)?;
 
     Ok(())
+}
+
+fn get_metadata(hash: &str) -> Result<Value> {
+    let output = Command::new("git")
+        .arg("show")
+        .arg(format!("{}:pseudo_crate/Cargo.toml", hash))
+        .output()?;
+    if !output.status.success() {
+        println!("{}", from_utf8(&output.stderr)?);
+        return Err(anyhow!("Failed to run 'git show'"));
+    }
+    let tempdir = tempdir()?;
+    let cargo_toml = tempdir.path().join("Cargo.toml");
+    write(&cargo_toml, output.stdout)?;
+    create_dir(tempdir.path().join("src"))?;
+    write(tempdir.path().join("src/lib.rs"), "//\n")?;
+    let output = Command::new("cargo")
+        .args(["metadata", "--offline", "--format-version=1", "--manifest-path"])
+        .arg(cargo_toml)
+        .output()?;
+    tempdir.close()?;
+    if !output.status.success() {
+        println!("{}", from_utf8(&output.stderr)?);
+        return Err(anyhow!("Failed to run 'cargo metadata'"));
+    }
+    let val = serde_json::from_slice(&output.stdout)?;
+    Ok(val)
+}
+
+fn get_deps(metadata: &Value) -> Option<BTreeMap<String, String>> {
+    let mut deps = BTreeMap::new();
+    for dep in metadata["packages"].as_array()?[0]["dependencies"].as_array()? {
+        deps.insert(dep["name"].as_str()?.to_string(), dep["req"].as_str()?.to_string());
+    }
+    Some(deps)
 }
