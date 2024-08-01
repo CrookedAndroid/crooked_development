@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80cab0f7_a1f5444f",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2024-08-01T16:17:42Z",
+      "side": 1,
+      "message": "i guess this only suppresses info logs instead of warnings?",
+      "revId": "a77f920cb6fd2d29f7bf500c3be25df11fb7aae3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d8029f3_85e1d0e6",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2024-08-01T16:17:42Z",
+      "side": 1,
+      "message": "tangentially related musings: puting the stderr error in the metadata file was kind of a lazy \"fail if there is unexpected stderr output\". maybe it is a nicer user experience to save stderr to a buffer and fail gracefully when non-empty",
+      "revId": "a77f920cb6fd2d29f7bf500c3be25df11fb7aae3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
