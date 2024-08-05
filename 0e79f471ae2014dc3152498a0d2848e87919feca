@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b290fb0b_6af5e99d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-05T15:11:36Z",
+      "side": 1,
+      "message": "I love it!",
+      "revId": "0e79f471ae2014dc3152498a0d2848e87919feca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa63f9a_481ba580",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-05T15:11:36Z",
+      "side": 1,
+      "message": "Do we know if there are any Android.bp files with rules that cargo_embargo doesn\u0027t now generate?\n\nI think there are some cases were we have a patch for the Android.bp, which I guess should be OK.",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 38
+      },
+      "revId": "0e79f471ae2014dc3152498a0d2848e87919feca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
