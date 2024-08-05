@@ -39,6 +39,30 @@
       },
       "revId": "0e79f471ae2014dc3152498a0d2848e87919feca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50894883_313b5899",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-08-05T15:12:45Z",
+      "side": 1,
+      "message": "I don\u0027t know, I haven\u0027t tried this on all of them yet sorry. I guess we\u0027ll find out as we run it, and can add patches or extra modules if necessary.",
+      "parentUuid": "6aa63f9a_481ba580",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 38
+      },
+      "revId": "0e79f471ae2014dc3152498a0d2848e87919feca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
