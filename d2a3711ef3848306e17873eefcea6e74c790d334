@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e497a297_d4a45f62",
+        "filename": "vndk/tools/header-checker/src/repr/abi_diff_helpers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-08-06T10:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa4624ef_7b3c4613",
+      "revId": "d2a3711ef3848306e17873eefcea6e74c790d334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96a0559f_c9233cd5",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-08-06T09:23:38Z",
       "side": 1,
       "message": "save the result of this expression and reuse it at L459",
+      "range": {
+        "startLine": 449,
+        "startChar": 8,
+        "endLine": 449,
+        "endChar": 45
+      },
+      "revId": "d2a3711ef3848306e17873eefcea6e74c790d334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3acfa65a_bb31b878",
+        "filename": "vndk/tools/header-checker/src/repr/abi_diff_helpers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-08-06T10:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96a0559f_c9233cd5",
       "range": {
         "startLine": 449,
         "startChar": 8,
