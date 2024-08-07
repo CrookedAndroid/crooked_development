@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5b76fde_8c3ba40c",
+        "filename": "tools/external_crates/crate_health/src/protos/metadata.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-07T21:30:19Z",
+      "side": 1,
+      "message": "Do we want to update this to 2024?",
+      "fixSuggestions": [
+        {
+          "fixId": "9235d233_b8f9cadc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tools/external_crates/crate_health/src/protos/metadata.proto",
+              "range": {
+                "startLine": 1,
+                "startChar": 0,
+                "endLine": 2,
+                "endChar": 0
+              },
+              "replacement": "// Copyright (C) 2024 The Android Open Source Project\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bd9c170905919985d5e2a58939716905e8ee88e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5676627b_5d8896fe",
+        "filename": "tools/external_crates/crate_health/src/version_match.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-07T21:30:19Z",
+      "side": 1,
+      "message": "I was going to raise a point about \"Local\" time, but realized we\u0027re just coarsely tracking day/month/year, so it\u0027s not going to be off/confusing.",
+      "revId": "bd9c170905919985d5e2a58939716905e8ee88e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
