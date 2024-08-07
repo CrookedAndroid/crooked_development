@@ -99,3 +99,5 @@ pub fn copy_dir(src: &impl AsRef<Path>, dst: &impl AsRef<Path>) -> Result<()> {
     }
     Ok(())
 }
+
+include!(concat!(env!("OUT_DIR"), "/protos/mod.rs"));

@@ -114,6 +114,14 @@ impl Crate {
         }
         format!("{}-{}", self.name(), self.version().to_string())
     }
+    pub fn crates_io_url(&self) -> String {
+        format!(
+            "https://static.crates.io/crates/{}/{}-{}.crate",
+            self.name(),
+            self.name(),
+            self.version()
+        )
+    }
 
     pub fn is_crates_io(&self) -> bool {
         const NOT_CRATES_IO: &'static [&'static str] = &[
