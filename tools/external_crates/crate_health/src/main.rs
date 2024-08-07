@@ -471,6 +471,7 @@ pub fn stage<T: AsRef<str>>(
     version_match.apply_patches()?;
     version_match.generate_android_bps()?;
     version_match.diff_android_bps()?;
+    version_match.update_metadata()?;
 
     Ok(version_match)
 }

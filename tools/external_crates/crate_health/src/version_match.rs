@@ -12,12 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use std::collections::BTreeMap;
+use std::{
+    collections::BTreeMap,
+    fs::{read_to_string, write},
+    path::Path,
+};
 
 use anyhow::{anyhow, Result};
+use chrono::{DateTime, Datelike, Local};
 
 use crate::{
-    generate_android_bps, CrateCollection, Migratable, NameAndVersion, NameAndVersionMap,
+    generate_android_bps, metadata, CrateCollection, Migratable, NameAndVersion, NameAndVersionMap,
     NamedAndVersioned,
 };
 
@@ -192,6 +197,32 @@ impl VersionMatch<CrateCollection> {
                 .get_mut(&nv)
                 .ok_or(anyhow!("Failed to get crate {} {}", nv.name(), nv.version()))?
                 .set_diff_output(output);
+        }
+        Ok(())
+    }
+
+    pub fn update_metadata(&self) -> Result<()> {
+        for pair in self.compatible_and_eligible() {
+            if pair.source.version() != pair.dest.version() {
+                let metadata_path = pair.dest.staging_path().join(&Path::new("METADATA")).abs();
+                let metadata = read_to_string(&metadata_path)?;
+                let mut metadata: metadata::MetaData =
+                    protobuf::text_format::parse_from_str(&metadata)?;
+
+                let identifier =
+                    metadata.third_party.as_mut().unwrap().identifier.get_mut(0).unwrap();
+                identifier.set_version(pair.dest.version().to_string());
+                identifier.set_value(pair.dest.crates_io_url());
+
+                let now: DateTime<Local> = Local::now();
+                let date =
+                    metadata.third_party.as_mut().unwrap().last_upgrade_date.as_mut().unwrap();
+                date.set_day(now.day().try_into()?);
+                date.set_month(now.month().try_into()?);
+                date.set_day(now.year());
+
+                write(&metadata_path, protobuf::text_format::print_to_string_pretty(&metadata))?;
+            }
         }
         Ok(())
     }
