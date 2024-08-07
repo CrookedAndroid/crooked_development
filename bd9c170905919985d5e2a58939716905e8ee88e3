@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff0e9935_826434b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-07T21:30:21Z",
+      "side": 1,
+      "message": "I need to update this to not touch the METADATA file when migrating, only when updating.",
+      "revId": "bd9c170905919985d5e2a58939716905e8ee88e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5b76fde_8c3ba40c",
         "filename": "tools/external_crates/crate_health/src/protos/metadata.proto",
         "patchSetId": 1
