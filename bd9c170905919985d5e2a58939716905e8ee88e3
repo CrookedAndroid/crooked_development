@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c05de19_574133e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-07T21:49:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff0e9935_826434b0",
+      "revId": "bd9c170905919985d5e2a58939716905e8ee88e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5b76fde_8c3ba40c",
@@ -49,6 +67,24 @@
           ]
         }
       ],
+      "revId": "bd9c170905919985d5e2a58939716905e8ee88e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20b9bc4b_71b4787d",
+        "filename": "tools/external_crates/crate_health/src/protos/metadata.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-07T21:49:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5b76fde_8c3ba40c",
       "revId": "bd9c170905919985d5e2a58939716905e8ee88e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
