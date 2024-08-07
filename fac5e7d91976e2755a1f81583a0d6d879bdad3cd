@@ -22,6 +22,30 @@
       },
       "revId": "fac5e7d91976e2755a1f81583a0d6d879bdad3cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88cad9e1_be958c64",
+        "filename": "tools/external_crates/crate_health/src/main.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-07T21:55:24Z",
+      "side": 1,
+      "message": "VScode shows the name of the variable.\n\nIt\u0027s probably OK until I can do some refactoring.",
+      "parentUuid": "98a594ad_b68f1a88",
+      "range": {
+        "startLine": 172,
+        "startChar": 55,
+        "endLine": 172,
+        "endChar": 60
+      },
+      "revId": "fac5e7d91976e2755a1f81583a0d6d879bdad3cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
