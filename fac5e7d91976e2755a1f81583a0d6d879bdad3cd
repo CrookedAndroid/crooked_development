@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98a594ad_b68f1a88",
+        "filename": "tools/external_crates/crate_health/src/main.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-07T21:53:33Z",
+      "side": 1,
+      "message": "enum vs. bool for readability? Should this be spelled out more clearly or do we just assume the IDE takes care of this, and a single bool is ok?",
+      "range": {
+        "startLine": 172,
+        "startChar": 55,
+        "endLine": 172,
+        "endChar": 60
+      },
+      "revId": "fac5e7d91976e2755a1f81583a0d6d879bdad3cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
