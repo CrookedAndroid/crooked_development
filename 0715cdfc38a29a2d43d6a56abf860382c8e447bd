@@ -33,6 +33,24 @@
       "message": "Do we want to submit this now? If we do, we need to go through another round of regenerating every Android.bp in external/rust/crates.",
       "revId": "0715cdfc38a29a2d43d6a56abf860382c8e447bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "026953bb_9dad4780",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-08T13:52:12Z",
+      "side": 1,
+      "message": "I\u0027m OK with landing this whenever, but just want to make sure we don\u0027t forget. TBH, I\u0027d rather it just be a top-level thing for all 3p crates, but I don\u0027t think the service works like that (although it should).",
+      "parentUuid": "3118edd2_b0c0a590",
+      "revId": "0715cdfc38a29a2d43d6a56abf860382c8e447bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
