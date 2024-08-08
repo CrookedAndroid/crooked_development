@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1113ae67_54e24260",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-08T14:12:01Z",
+      "side": 1,
+      "message": "Per b/358317781, we now completely replace the Identifier fields.",
+      "revId": "e30a13f59c645e45f48abcac4797eab3e4cf18c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
