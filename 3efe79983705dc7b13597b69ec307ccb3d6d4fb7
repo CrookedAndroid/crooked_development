@@ -34,6 +34,24 @@
       "parentUuid": "5f114231_3cd4ad40",
       "revId": "3efe79983705dc7b13597b69ec307ccb3d6d4fb7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2e64222_520ff551",
+        "filename": "tools/external_crates/crate_health/src/google_metadata.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-09T21:42:55Z",
+      "side": 1,
+      "message": "Perfect. Thanks for updating it. LGTM on the rest. Surprised to see you working today. ;)",
+      "parentUuid": "4bc985fe_6fa67ade",
+      "revId": "3efe79983705dc7b13597b69ec307ccb3d6d4fb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
