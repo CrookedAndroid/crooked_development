@@ -16,6 +16,24 @@
       "message": "Missing copyright header, and might need `rustfmt` applied?",
       "revId": "3efe79983705dc7b13597b69ec307ccb3d6d4fb7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bc985fe_6fa67ade",
+        "filename": "tools/external_crates/crate_health/src/google_metadata.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-09T20:36:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f114231_3cd4ad40",
+      "revId": "3efe79983705dc7b13597b69ec307ccb3d6d4fb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
