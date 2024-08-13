@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14701a6e_8612c871",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2024-08-13T23:08:59Z",
+      "side": 1,
+      "message": "we should probably do a simple string split on ` OR `, ` or `, `/` or find some standard way to parse this, but not a blocker",
+      "revId": "2447fd0f404d0e95b4b126230c9f3a235158f83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
