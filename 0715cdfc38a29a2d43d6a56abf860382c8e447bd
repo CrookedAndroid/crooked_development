@@ -51,6 +51,24 @@
       "parentUuid": "3118edd2_b0c0a590",
       "revId": "0715cdfc38a29a2d43d6a56abf860382c8e447bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f8e1bc6_1b261738",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-13T18:43:04Z",
+      "side": 1,
+      "message": "Let\u0027s submit this. We can handle it with aosp/3218256",
+      "parentUuid": "026953bb_9dad4780",
+      "revId": "0715cdfc38a29a2d43d6a56abf860382c8e447bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
