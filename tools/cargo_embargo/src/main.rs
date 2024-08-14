@@ -748,6 +748,7 @@ fn choose_license(license: &str) -> &str {
         "MIT/Apache-2.0" => "Apache-2.0",
         "Apache-2.0/MIT" => "Apache-2.0",
         "Apache-2.0 or BSD-3-Clause" => "Apache-2.0",
+        "Zlib OR Apache-2.0 OR MIT" => "Apache-2.0", // Used by bytemuck.
         "Unlicense OR MIT" => "MIT",
         _ => license,
     }
