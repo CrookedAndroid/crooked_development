@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66260178_750aef4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1742510
+      },
+      "writtenOn": "2024-08-14T18:37:58Z",
+      "side": 1,
+      "message": "The linter errors are false positives since these are canonical license texts, not licenses attached to software being imported.",
+      "revId": "0fad35aa3e2700dea72d18ac93f163d2b1e98c5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
