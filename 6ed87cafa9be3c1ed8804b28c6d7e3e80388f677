@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e717cd36_eb2b0c77",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-08-15T23:33:19Z",
+      "side": 1,
+      "message": "nit: comments like this can go out of date quickly",
+      "range": {
+        "startLine": 751,
+        "startChar": 52,
+        "endLine": 751,
+        "endChar": 73
+      },
+      "revId": "6ed87cafa9be3c1ed8804b28c6d7e3e80388f677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
