@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bce2b1d_a93692e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-15T19:56:15Z",
+      "side": 1,
+      "message": "So we can switch to using Android\u0027s cargo instead of whatever the user happens to have installed.",
+      "revId": "9d7d7ebd0b8030a7a4dde40b52693fe474cac9ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
