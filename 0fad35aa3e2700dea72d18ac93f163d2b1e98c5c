@@ -16,6 +16,63 @@
       "message": "The linter errors are false positives since these are canonical license texts, not licenses attached to software being imported.",
       "revId": "0fad35aa3e2700dea72d18ac93f163d2b1e98c5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62493408_73e91c91",
+        "filename": "tools/external_crates/license_checker/src/content_checker.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-16T09:30:07Z",
+      "side": 1,
+      "message": "Remove this line.",
+      "revId": "0fad35aa3e2700dea72d18ac93f163d2b1e98c5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e594f69_7716a2b2",
+        "filename": "tools/external_crates/license_checker/src/content_checker.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-16T09:30:07Z",
+      "side": 1,
+      "message": "Would it be better to pull all of the `lazy_static` items into a separate file? If we ever add a new license (not that this is common), there are multiple places that have to have changes made, and it might be easy to accidentally miss one. Maybe this is not as idiomatic for how people use `lazy_static` though.",
+      "revId": "0fad35aa3e2700dea72d18ac93f163d2b1e98c5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49843869_99278279",
+        "filename": "tools/external_crates/license_checker/src/lib.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-16T09:30:07Z",
+      "side": 1,
+      "message": "minimize?",
+      "range": {
+        "startLine": 49,
+        "startChar": 29,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "0fad35aa3e2700dea72d18ac93f163d2b1e98c5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
