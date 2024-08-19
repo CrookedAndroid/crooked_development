@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3fd8c21_3aa2aeb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-08-19T13:47:29Z",
+      "side": 1,
+      "message": "`cargo_embargo` is used for things other than `external/rust/crates`, so we at least need a way to configure the test owner team in `cargo_embargo.json` rather than hardcoding it here. Alternatively, http://go/new-android-ownership-model says that the default team applies to all modules under the directory where it is specified, so could we just specify it in `external/rust/crates/Android.bp` as a default for all external crates? Then no change to `cargo_embargo` is needed, nor regenerating all the `Android.bp` files.",
+      "revId": "0715cdfc38a29a2d43d6a56abf860382c8e447bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1f240e8a_31d9600d",
