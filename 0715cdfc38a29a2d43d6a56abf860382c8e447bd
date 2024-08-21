@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c32fb89c_f82a38f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-21T05:11:49Z",
+      "side": 1,
+      "message": "@jamesfarrell@google.com - do you want to see if adding a top-level directive in `external/rust/android-crates-io` is sufficient for ATOS? At that point, I\u0027d be fine with reverting this.\n\nNote that there is no point in adding it to `external/rust/crates` because we can\u0027t even have an `Android.bp` there since it only consists of sub-projects (that we\u0027re hopefully migrating out of there).",
+      "parentUuid": "c3fd8c21_3aa2aeb5",
+      "revId": "0715cdfc38a29a2d43d6a56abf860382c8e447bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1f240e8a_31d9600d",
