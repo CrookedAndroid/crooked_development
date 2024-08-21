@@ -70,6 +70,30 @@
       },
       "revId": "6ed87cafa9be3c1ed8804b28c6d7e3e80388f677",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d565d7cd_5d0eb916",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-21T18:07:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2b600e8_72f8f087",
+      "range": {
+        "startLine": 751,
+        "startChar": 52,
+        "endLine": 751,
+        "endChar": 73
+      },
+      "revId": "6ed87cafa9be3c1ed8804b28c6d7e3e80388f677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
