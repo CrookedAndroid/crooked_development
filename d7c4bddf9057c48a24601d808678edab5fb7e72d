@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6950453_ddf0fbca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-08-23T16:20:26Z",
+      "side": 1,
+      "message": "Bypassing lint due to known rustfmt bug",
+      "revId": "d7c4bddf9057c48a24601d808678edab5fb7e72d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
