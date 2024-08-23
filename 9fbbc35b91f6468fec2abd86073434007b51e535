@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b4b254a_87019137",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2024-08-23T16:48:12Z",
+      "side": 1,
+      "message": "Overriding lint, known rustfmt bug",
+      "revId": "9fbbc35b91f6468fec2abd86073434007b51e535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
