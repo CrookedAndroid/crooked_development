@@ -13,7 +13,7 @@
 // limitations under the License.
 
 use std::{
-    collections::BTreeMap,
+    collections::{BTreeMap, BTreeSet},
     fs::{create_dir, write},
     process::Command,
     str::from_utf8,
@@ -93,12 +93,21 @@ impl PseudoCrate {
     pub fn get_path(&self) -> &RepoPath {
         &self.path
     }
-    pub fn add(&self, krate: &impl NamedAndVersioned) -> Result<()> {
+    fn add_internal(&self, crate_and_version_str: &str) -> Result<()> {
         Command::new("cargo")
-            .args(["add", format!("{}@={}", krate.name(), krate.version()).as_str()])
+            .args(["add", crate_and_version_str])
             .current_dir(self.path.abs())
             .run_quiet_and_expect_success()?;
         Ok(())
+    }
+    pub fn add(&self, krate: &impl NamedAndVersioned) -> Result<()> {
+        self.add_internal(format!("{}@={}", krate.name(), krate.version()).as_str())
+    }
+    pub fn add_unpinned(&self, krate: &impl NamedAndVersioned) -> Result<()> {
+        self.add_internal(format!("{}@{}", krate.name(), krate.version()).as_str())
+    }
+    pub fn add_unversioned(&self, crate_name: &str) -> Result<()> {
+        self.add_internal(crate_name)
     }
     pub fn remove(&self, krate: &impl NamedAndVersioned) -> Result<()> {
         Command::new("cargo")
@@ -132,6 +141,17 @@ impl PseudoCrate {
                 .strip_prefix("v")
                 .ok_or(anyhow!("Failed to parse version: {}", words[1]))?;
             deps.insert(words[0].to_string(), version.to_string());
+        }
+        Ok(deps)
+    }
+    pub fn deps_of(&self, crate_name: &str) -> Result<BTreeSet<String>> {
+        let mut deps = BTreeSet::new();
+        let output = Command::new("cargo")
+            .args(["tree", "--prefix", "none"])
+            .current_dir(self.get_path().abs().join("vendor").join(crate_name))
+            .run_quiet_and_expect_success()?;
+        for line in from_utf8(&output.stdout)?.lines() {
+            deps.insert(line.split_once(' ').unwrap().0.to_string());
         }
         Ok(deps)
     }
