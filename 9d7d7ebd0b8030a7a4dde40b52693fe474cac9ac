@@ -69,6 +69,24 @@
       "parentUuid": "cda14255_6ae386f4",
       "revId": "9d7d7ebd0b8030a7a4dde40b52693fe474cac9ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ee4325_5b5cdefd",
+        "filename": "tools/external_crates/android_cargo.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-26T18:13:24Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t love it either, but there\u0027s also the fact that cargo isn\u0027t even supposed to be supported, except that it is, and I\u0027m using it.",
+      "parentUuid": "2123695f_395a5ca0",
+      "revId": "9d7d7ebd0b8030a7a4dde40b52693fe474cac9ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
