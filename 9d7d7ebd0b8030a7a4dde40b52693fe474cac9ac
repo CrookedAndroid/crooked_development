@@ -51,6 +51,24 @@
       "parentUuid": "9251ed5a_94fd4bbc",
       "revId": "9d7d7ebd0b8030a7a4dde40b52693fe474cac9ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2123695f_395a5ca0",
+        "filename": "tools/external_crates/android_cargo.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-26T18:08:07Z",
+      "side": 1,
+      "message": "ugh, Android\u0027s `stable` isn\u0027t supposed to be load-bearing. All of those exist purely for desktop convenience (and can go out of date without any notice - i.e. there is no actual testing here). Since this pattern already exists, let\u0027s use it, but we really should rewrite what Soong is doing to be parsed by non-Soong tools as well, and thus we all benefit from a single place to update/test our tools.",
+      "parentUuid": "cda14255_6ae386f4",
+      "revId": "9d7d7ebd0b8030a7a4dde40b52693fe474cac9ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
