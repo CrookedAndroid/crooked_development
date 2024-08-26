@@ -43,10 +43,15 @@ enum Cmd {
         /// The crate name. Also the directory name in external/rust/crates.
         crate_name: String,
     },
-    /// Migrate a crate from external/rust/crates to the monorepo.
+    /// Migrate crates from external/rust/crates to the monorepo.
     Migrate {
         /// The crate names. Also the directory names in external/rust/crates.
         crates: Vec<String>,
+    },
+    /// Import a crate and its dependencies into the monorepo.
+    Import {
+        /// The crate name.
+        crate_name: String,
     },
     /// Regenerate a crate directory.
     Regenerate {
@@ -79,5 +84,6 @@ fn main() -> Result<()> {
         Cmd::Regenerate { crates } => managed_repo.regenerate(crates.iter(), true),
         Cmd::RegenerateAll {} => managed_repo.regenerate_all(true),
         Cmd::PreuploadCheck { files: _ } => managed_repo.preupload_check(),
+        Cmd::Import { crate_name } => managed_repo.import(&crate_name),
     }
 }
