@@ -16,6 +16,23 @@
       "message": "So we can switch to using Android\u0027s cargo instead of whatever the user happens to have installed.",
       "revId": "9d7d7ebd0b8030a7a4dde40b52693fe474cac9ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9251ed5a_94fd4bbc",
+        "filename": "tools/external_crates/android_cargo.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-26T17:01:01Z",
+      "side": 1,
+      "message": "I understand what this is trying to do, but I also feel like we don\u0027t let other people depend on \"stable\". Could we instead parse this directly from `build/soong` instead?",
+      "revId": "9d7d7ebd0b8030a7a4dde40b52693fe474cac9ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
