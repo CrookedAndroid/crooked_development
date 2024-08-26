@@ -40,8 +40,8 @@ struct Cli {
 enum Cmd {
     /// Check the health of a crate, and whether it is safe to migrate.
     MigrationHealth {
-        /// The crate name. Also the directory name in external/rust/crates.
-        crate_name: String,
+        /// The crate names. Also the directory names in external/rust/crates.
+        crates: Vec<String>,
     },
     /// Migrate a crate from external/rust/crates to the monorepo.
     Migrate {
@@ -71,8 +71,10 @@ fn main() -> Result<()> {
         ManagedRepo::new(RepoPath::new(args.repo_root, "external/rust/android-crates-io"));
 
     match args.command {
-        Cmd::MigrationHealth { crate_name } => {
-            managed_repo.migration_health(&crate_name, args.verbose)?;
+        Cmd::MigrationHealth { crates } => {
+            for crate_name in crates {
+                managed_repo.migration_health(&crate_name, args.verbose)?;
+            }
             Ok(())
         }
         Cmd::Migrate { crates } => managed_repo.migrate(crates, args.verbose),
