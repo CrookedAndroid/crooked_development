@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2642d397_d2d803a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-26T16:36:50Z",
+      "side": 1,
+      "message": "Putting it in external/rust/android-crates-io/crates/Android.bp SGTM.",
+      "parentUuid": "c32fb89c_f82a38f5",
+      "revId": "0715cdfc38a29a2d43d6a56abf860382c8e447bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1f240e8a_31d9600d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
