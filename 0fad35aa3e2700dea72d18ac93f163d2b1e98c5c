@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0cf7069_1db9f7c2",
+        "filename": "tools/external_crates/license_checker/src/content_checker.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-26T16:41:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62493408_73e91c91",
+      "revId": "0fad35aa3e2700dea72d18ac93f163d2b1e98c5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e594f69_7716a2b2",
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1512f5a1_f6880e33",
+        "filename": "tools/external_crates/license_checker/src/content_checker.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-26T16:41:39Z",
+      "side": 1,
+      "message": "Maybe. I considered that, for exactly the reasons you mentioned. I think this is OK for now, though. It\u0027s easy enough to change.",
+      "parentUuid": "5e594f69_7716a2b2",
+      "revId": "0fad35aa3e2700dea72d18ac93f163d2b1e98c5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49843869_99278279",
@@ -65,6 +101,30 @@
       "writtenOn": "2024-08-16T09:30:07Z",
       "side": 1,
       "message": "minimize?",
+      "range": {
+        "startLine": 49,
+        "startChar": 29,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "0fad35aa3e2700dea72d18ac93f163d2b1e98c5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af442673_fcccbb48",
+        "filename": "tools/external_crates/license_checker/src/lib.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-26T16:41:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49843869_99278279",
       "range": {
         "startLine": 49,
         "startChar": 29,
