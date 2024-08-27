@@ -73,6 +73,10 @@ enum Cmd {
         /// List of changed files
         files: Vec<String>,
     },
+    /// Try to fix problems with license files.
+    FixLicenses {},
+    /// Fix up METADATA files
+    FixMetadata {},
 }
 
 fn parse_crate_list(arg: &str) -> Result<BTreeSet<String>> {
@@ -103,5 +107,7 @@ fn main() -> Result<()> {
         Cmd::RegenerateAll {} => managed_repo.regenerate_all(true),
         Cmd::PreuploadCheck { files: _ } => managed_repo.preupload_check(),
         Cmd::Import { crate_name } => managed_repo.import(&crate_name),
+        Cmd::FixLicenses {} => managed_repo.fix_licenses(),
+        Cmd::FixMetadata {} => managed_repo.fix_metadata(),
     }
 }
