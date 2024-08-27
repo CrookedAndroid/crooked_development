@@ -13,7 +13,7 @@
 // limitations under the License.
 
 use std::{
-    collections::BTreeSet,
+    collections::{BTreeMap, BTreeSet},
     fs::{create_dir, read_dir, remove_dir_all, remove_file, rename, write},
     path::Path,
     process::Command,
@@ -23,11 +23,14 @@ use std::{
 use anyhow::{anyhow, Result};
 use glob::glob;
 use itertools::Itertools;
+use lazy_static::lazy_static;
+use license_checker::{find_licenses, LicenseState};
 use semver::Version;
+use spdx::{LicenseReq, Licensee};
 
 use crate::{
-    copy_dir, CrateCollection, Migratable, NameAndVersion, NameAndVersionMap, NameAndVersionRef,
-    NamedAndVersioned, PseudoCrate, RepoPath, VersionMatch,
+    copy_dir, CrateCollection, GoogleMetadata, Migratable, NameAndVersion, NameAndVersionMap,
+    NameAndVersionRef, NamedAndVersioned, PseudoCrate, RepoPath, VersionMatch,
 };
 
 pub struct ManagedRepo {
@@ -443,6 +446,38 @@ impl ManagedRepo {
 
         Ok(())
     }
+    pub fn fix_licenses(&self) -> Result<()> {
+        let mut cc = self.new_cc();
+        cc.add_from(&self.managed_dir().rel())?;
+
+        for (_, krate) in cc.map_field() {
+            println!("{} = \"={}\"", krate.name(), krate.version());
+            let state = find_licenses(krate.path().abs(), krate.name(), krate.license())?;
+            if !state.unsatisfied.is_empty() {
+                println!("{:?}", state);
+            } else {
+                // For now, just update MODULE_LICENSE_*
+                update_module_license_files(&krate.path().abs(), &state)?;
+            }
+        }
+
+        Ok(())
+    }
+    pub fn fix_metadata(&self) -> Result<()> {
+        let mut cc = self.new_cc();
+        cc.add_from(&self.managed_dir().rel())?;
+
+        for (_, krate) in cc.map_field() {
+            println!("{} = \"={}\"", krate.name(), krate.version());
+            let mut metadata = GoogleMetadata::try_from(krate.path().join(&"METADATA").abs())?;
+            metadata.set_identifier(krate)?;
+            metadata.migrate_archive();
+            metadata.migrate_homepage();
+            metadata.write()?;
+        }
+
+        Ok(())
+    }
 }
 
 // Files that are ignored when migrating a crate to the monorepo.
@@ -513,3 +548,39 @@ static IGNORED_FILES: &'static [&'static str] = &[
     "cargo.out",
     "target.tmp",
 ];
+
+// DO NOT SUBMIT. From import code in aosp/3243620.
+pub fn update_module_license_files(path: &impl AsRef<Path>, licenses: &LicenseState) -> Result<()> {
+    let path = path.as_ref();
+    for old_module_license_file in glob(
+        path.join("MODULE_LICENSE*").to_str().ok_or(anyhow!("Failed to convert path to string"))?,
+    )? {
+        remove_file(old_module_license_file?)?;
+    }
+    for license in licenses.satisfied.keys().chain(&licenses.unsatisfied) {
+        if let Some(mod_lic) = MODULE_LICENSE_FILES.get(license) {
+            write(path.join(mod_lic), "")?;
+        }
+    }
+    Ok(())
+}
+
+lazy_static! {
+    static ref MODULE_LICENSE_FILES: BTreeMap<LicenseReq, &'static str> = vec![
+        ("Apache-2.0", "MODULE_LICENSE_APACHE2"),
+        ("MIT", "MODULE_LICENSE_MIT"),
+        ("BSD-3-Clause", "MODULE_LICENSE_BSD"),
+        ("BSD-2-Clause", "MODULE_LICENSE_BSD"),
+        ("ISC", "MODULE_LICENSE_ISC"),
+        ("MPL-2.0", "MODULE_LICENSE_MPL"),
+        ("0BSD", "MODULE_LICENSE_PERMISSIVE"),
+        ("Unlicense", "MODULE_LICENSE_PERMISSIVE"),
+        ("Zlib", "MODULE_LICENSE_ZLIB"),
+        ("Unicode-DFS-2016", "MODULE_LICENSE_UNICODE"),
+        ("NCSA", "MODULE_LICENSE_NCSA"),
+        ("OpenSSL", "MODULE_LICENSE_OPENSSL"),
+    ]
+    .into_iter()
+    .map(|l| (Licensee::parse(l.0).unwrap().into_req(), l.1))
+    .collect();
+}
