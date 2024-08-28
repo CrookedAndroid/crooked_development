@@ -23,6 +23,7 @@ tinytemplate = "1.2"
 walkdir = "2"
 whoami = "1"
 crate_health_proc_macros = { path = "../crate_health_proc_macros" }
+rooted_path = { path = "../rooted_path" }
 
 [build-dependencies]
 protobuf-codegen = "3"
