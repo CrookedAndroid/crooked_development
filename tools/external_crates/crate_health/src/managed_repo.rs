@@ -459,6 +459,10 @@ impl ManagedRepo {
             if !pair.dest.staging_path().abs().exists() {
                 return Err(anyhow!("Staged crate not found at {}", pair.dest.staging_path()));
             }
+            let cargo_lock = pair.dest.staging_path().abs().join("Cargo.lock");
+            if cargo_lock.exists() {
+                remove_file(cargo_lock)?;
+            }
             let android_crate_dir = self.managed_dir_for(pair.source.name());
             remove_dir_all(&android_crate_dir)?;
             rename(pair.dest.staging_path(), &android_crate_dir)?;
