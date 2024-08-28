@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddcf8365_a62a2e87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1933736
+      },
+      "writtenOn": "2024-08-28T17:09:01Z",
+      "side": 1,
+      "message": "I also enjoy glitter",
+      "revId": "21bcec1eeb80c9f84bed5abd29f6ac4c4ee9bd96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
