@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "403cb2d6_66061e5d",
+        "filename": "tools/external_crates/crate_health/src/android_bp.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-28T20:58:18Z",
+      "side": 1,
+      "message": "Nope. Command::new() takes OsStr, not Path",
+      "parentUuid": "1129f3b8_6144c65b",
+      "revId": "7cb4ac9c8705332b41df33a02cfe7baca4cb15b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d6cf11d_af638cea",
         "filename": "tools/external_crates/crate_health/src/crate_type.rs",
         "patchSetId": 2
@@ -48,6 +66,30 @@
       "writtenOn": "2024-08-28T20:51:39Z",
       "side": 1,
       "message": "`\u0026manifest_dir` instead?",
+      "range": {
+        "startLine": 76,
+        "startChar": 43,
+        "endLine": 76,
+        "endChar": 61
+      },
+      "revId": "7cb4ac9c8705332b41df33a02cfe7baca4cb15b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33da0aaa_7a8ff057",
+        "filename": "tools/external_crates/crate_health/src/crate_type.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-28T20:58:18Z",
+      "side": 1,
+      "message": "Nope. Doesn\u0027t work here either.",
+      "parentUuid": "0d6cf11d_af638cea",
       "range": {
         "startLine": 76,
         "startChar": 43,
