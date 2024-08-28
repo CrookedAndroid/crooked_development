@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d133605f_7c01d362",
+        "filename": "tools/external_crates/crate_health/src/license.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-28T09:21:29Z",
+      "side": 1,
+      "message": "nit: This line is mildly confusing if you don\u0027t really work on 3P AOSP stuff, as it is just creating an empty file with the proper filename for the license. It might be worth a comment, as even I misread it originally because of the `path.join` call too.",
+      "revId": "43697aab2c01bce4872dff45998039025f8da5ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a85e4b9_d279a841",
+        "filename": "tools/external_crates/crate_health/src/license.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-28T09:21:29Z",
+      "side": 1,
+      "message": "Super nit: It would be great to have just one table with the license name, filename, and license type in each row, and then run 2 different iterators on that data to create the static `vec`s that you eventually use. I even tried to experiment with this last week (yes I started a code review and then distracted myself with this bit of it). Ultimately, I couldn\u0027t get it to work with `lazy_static`. Maybe I was just doing something wrong? Perhaps I should try to refactor it to do that once this lands. I just figured I would make a note so that I remember to try this later (or get told that it\u0027s not possible for some technical reason).",
+      "revId": "43697aab2c01bce4872dff45998039025f8da5ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eeb923a_2de214f8",
+        "filename": "tools/external_crates/crate_health/src/managed_repo.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-28T09:21:29Z",
+      "side": 1,
+      "message": "❤️",
+      "revId": "43697aab2c01bce4872dff45998039025f8da5ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5341bf39_ed139b22",
+        "filename": "tools/external_crates/crate_health/src/managed_repo.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-28T09:21:29Z",
+      "side": 1,
+      "message": "nit: It might be good to actually just create an `exists()` method for `RepoPath` directly. There are a lot of `.abs().exists()`. Alternatively should we implement `Deref` for `RepoPath` -\u003e `Path`, since this seems like a common operation?",
+      "revId": "43697aab2c01bce4872dff45998039025f8da5ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
