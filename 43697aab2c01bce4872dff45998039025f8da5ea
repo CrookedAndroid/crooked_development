@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5b72ac62_cd6b91be",
+        "filename": "tools/external_crates/crate_health/src/license.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-28T16:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d133605f_7c01d362",
+      "revId": "43697aab2c01bce4872dff45998039025f8da5ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0a85e4b9_d279a841",
         "filename": "tools/external_crates/crate_health/src/license.rs",
         "patchSetId": 5
@@ -65,6 +83,24 @@
       "writtenOn": "2024-08-28T09:21:29Z",
       "side": 1,
       "message": "nit: It might be good to actually just create an `exists()` method for `RepoPath` directly. There are a lot of `.abs().exists()`. Alternatively should we implement `Deref` for `RepoPath` -\u003e `Path`, since this seems like a common operation?",
+      "revId": "43697aab2c01bce4872dff45998039025f8da5ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4561c83_3ad6e462",
+        "filename": "tools/external_crates/crate_health/src/managed_repo.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-08-28T16:11:31Z",
+      "side": 1,
+      "message": "Yes, this is a good idea. I\u0027m going to move RepoPath to a separate crate, called RootedPath, and provide Into\u003cPathBuf\u003e, AsRef\u003cPath\u003e. Maybe Deref\u003cPath\u003e as well, but the docs prominently warm that you need to be careful about implementing Deref.",
+      "parentUuid": "5341bf39_ed139b22",
       "revId": "43697aab2c01bce4872dff45998039025f8da5ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
