@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33452d35_845952d4",
+        "filename": "tools/external_crates/crate_health/src/crate_collection.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-08-28T21:32:31Z",
+      "side": 1,
+      "message": "Doh! I noticed this and just assumed for some stupid reason on your previous CL that it still worked with the full path. Next time I\u0027ll add a comment.",
+      "revId": "ac02541b87740c8b52ceaa3d66ffaa86b360a291",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
