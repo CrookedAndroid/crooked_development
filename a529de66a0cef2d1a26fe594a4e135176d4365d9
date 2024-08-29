@@ -1,5 +1,57 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa4fe712_6bcbb0a9",
+        "filename": "tools/external_crates/license_checker/src/file_name_checker.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-08-29T11:24:40Z",
+      "side": 1,
+      "message": "Can you use `std::sync::LazyLock` instead, now that we have Rust 1.80? I\u0027d like to deprecate `lazy_static` as there\u0027s a better option in every case I\u0027ve seen.",
+      "revId": "a529de66a0cef2d1a26fe594a4e135176d4365d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb3d8f0d_42e9b772",
+        "filename": "tools/external_crates/license_checker/src/lib.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-08-29T11:24:40Z",
+      "side": 1,
+      "message": "This struct and its fields could also do with some doc comments.",
+      "revId": "a529de66a0cef2d1a26fe594a4e135176d4365d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cf030e3_7385b4ea",
+        "filename": "tools/external_crates/license_checker/src/lib.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-08-29T11:24:40Z",
+      "side": 1,
+      "message": "Could you add a doc comment on this explaining how it is intended to be used, and what exactly the return value means?",
+      "revId": "a529de66a0cef2d1a26fe594a4e135176d4365d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
