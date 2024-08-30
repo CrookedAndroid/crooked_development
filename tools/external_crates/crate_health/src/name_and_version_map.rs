@@ -74,6 +74,7 @@ impl<ValueType> NameAndVersionMap for BTreeMap<NameAndVersion, ValueType> {
     }
 
     fn insert_or_error(&mut self, key: NameAndVersion, val: Self::Value) -> Result<(), CrateError> {
+        tracing::debug!("Adding {} v{}", key.name(), key.version());
         if self.contains_key(&key) {
             Err(CrateError::DuplicateCrateVersion(key.name().to_string(), key.version().clone()))
         } else {
