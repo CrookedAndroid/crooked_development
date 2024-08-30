@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c5a88b6_7563a427",
+        "filename": "vndk/tools/header-checker/src/repr/ir_representation.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-08-30T10:24:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4b1a9ef_f2c72adf",
+      "revId": "197fd2f617c688e3b37d1ddfc356d0b84943a53d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3bcbb7b_500ba9ae",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-08-30T08:32:47Z",
       "side": 1,
       "message": "for nullable values, we should use std::optional\u003c\u003e to describe.\n\n```suggestion\n  std::optional\u003cuint32_t\u003e introduced_major_;\n  std::optional\u003cuint32_t\u003e deprecated_major_;\n  std::optional\u003cuint32_t\u003e obsoleted_major_;\n```",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 26
+      },
+      "revId": "197fd2f617c688e3b37d1ddfc356d0b84943a53d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0528b8b6_b1b932fe",
+        "filename": "vndk/tools/header-checker/src/repr/ir_representation.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-08-30T10:24:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3bcbb7b_500ba9ae",
       "range": {
         "startLine": 197,
         "startChar": 0,
