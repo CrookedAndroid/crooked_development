@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4b1a9ef_f2c72adf",
+        "filename": "vndk/tools/header-checker/src/repr/ir_representation.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-08-30T08:32:47Z",
+      "side": 1,
+      "message": "Do you mean **Has**Deprecated?\n\nI think we can just return the optional object like:\n```\n  std::optional\u003cuint32_t\u003e GetIntroduced() const { return introduced_major_; }\n```\n\nWhen the caller wants to check the contained value it can:\n```\nAvailabilityAttrIR attr;\nif (auto introduced \u003d attr.GetIntroduced(); introduced.has_value()) {\n  auto introduced_value \u003d *introduced; // do something with value...\n}\n```",
+      "revId": "197fd2f617c688e3b37d1ddfc356d0b84943a53d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3bcbb7b_500ba9ae",
+        "filename": "vndk/tools/header-checker/src/repr/ir_representation.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-08-30T08:32:47Z",
+      "side": 1,
+      "message": "for nullable values, we should use std::optional\u003c\u003e to describe.\n\n```suggestion\n  std::optional\u003cuint32_t\u003e introduced_major_;\n  std::optional\u003cuint32_t\u003e deprecated_major_;\n  std::optional\u003cuint32_t\u003e obsoleted_major_;\n```",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 26
+      },
+      "revId": "197fd2f617c688e3b37d1ddfc356d0b84943a53d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
