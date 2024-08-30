@@ -159,6 +159,7 @@ impl Crate {
     // Make a clean copy of the crate in out/
     pub fn stage_crate(&self) -> Result<()> {
         let staging_path = self.staging_path();
+        tracing::debug!("Staging {} from {} to {}", self.name(), self.path, staging_path);
         ensure_exists_and_empty(&staging_path)?;
         remove_dir_all(&staging_path).context(format!("Failed to remove {}", staging_path))?;
         copy_dir(self.path(), &staging_path).context(format!(

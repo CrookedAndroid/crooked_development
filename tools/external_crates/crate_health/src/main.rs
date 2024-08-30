@@ -18,6 +18,10 @@ use anyhow::Result;
 use clap::{Parser, Subcommand};
 use crate_health::{default_repo_root, maybe_build_cargo_embargo, ManagedRepo};
 use rooted_path::RootedPath;
+use tracing_subscriber::filter::EnvFilter;
+use tracing_subscriber::fmt;
+use tracing_subscriber::layer::SubscriberExt;
+use tracing_subscriber::util::SubscriberInitExt;
 
 #[derive(Parser)]
 struct Cli {
@@ -85,6 +89,8 @@ fn parse_crate_list(arg: &str) -> Result<BTreeSet<String>> {
 }
 
 fn main() -> Result<()> {
+    tracing_subscriber::registry().with(fmt::layer()).with(EnvFilter::from_default_env()).init();
+
     let args = Cli::parse();
 
     maybe_build_cargo_embargo(&args.repo_root, args.rebuild_cargo_embargo)?;

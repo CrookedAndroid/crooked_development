@@ -40,6 +40,7 @@ impl CrateCollection {
         CrateCollection { crates: BTreeMap::new(), repo_root: repo_root.into() }
     }
     pub fn add_from(&mut self, path: impl AsRef<Path>) -> Result<()> {
+        tracing::debug!("Adding crates from {}", path.as_ref().display());
         for entry_or_err in WalkDir::new(self.repo_root.join(path)) {
             let entry = entry_or_err?;
             if entry.file_name() == "Cargo.toml" {
