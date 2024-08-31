@@ -1,0 +1,10 @@
+{
+  "package": {
+    "google_metadata": {
+      "device_supported": false,
+      "host_supported": true
+    }
+  },
+  "run_cargo": false,
+  "tests": true
+}
