@@ -2,6 +2,7 @@
 members = [
     "crate_health",
     "crate_health_proc_macros",
+    "google_metadata",
     "license_checker",
     "rooted_path",
 ]

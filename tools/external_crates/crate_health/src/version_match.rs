@@ -15,10 +15,11 @@
 use std::{collections::BTreeMap, path::Path};
 
 use anyhow::{anyhow, Result};
+use google_metadata::GoogleMetadata;
 
 use crate::{
-    generate_android_bps, CrateCollection, GoogleMetadata, Migratable, NameAndVersion,
-    NameAndVersionMap, NamedAndVersioned,
+    generate_android_bps, CrateCollection, Migratable, NameAndVersion, NameAndVersionMap,
+    NamedAndVersioned,
 };
 
 #[derive(Debug)]
@@ -205,7 +206,7 @@ impl VersionMatch<CrateCollection> {
             writeback |= metadata.migrate_archive();
             if pair.source.version() != pair.dest.version() {
                 metadata.set_date_to_today()?;
-                metadata.set_identifier(pair.dest)?;
+                metadata.set_identifier(pair.dest.name(), pair.dest.version().to_string())?;
                 writeback |= true;
             }
             if writeback {
