@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f2ff55_527b53de",
+        "filename": "vndk/tools/header-checker/src/repr/protobuf/proto/abi_dump.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-09-02T06:31:12Z",
+      "side": 1,
+      "message": "why can\u0027t this be just `optional`?",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 10
+      },
+      "revId": "967c426621add5408d0fba3f49d16d41329d7073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
