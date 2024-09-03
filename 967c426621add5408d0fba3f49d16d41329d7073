@@ -70,6 +70,30 @@
       },
       "revId": "967c426621add5408d0fba3f49d16d41329d7073",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d234081_8f436ada",
+        "filename": "vndk/tools/header-checker/src/repr/protobuf/proto/abi_dump.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-09-03T04:32:24Z",
+      "side": 1,
+      "message": "If the numbers are not equal, the compiler shows a warning and skips the availability check.",
+      "parentUuid": "626fdf42_360cbcec",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 10
+      },
+      "revId": "967c426621add5408d0fba3f49d16d41329d7073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
