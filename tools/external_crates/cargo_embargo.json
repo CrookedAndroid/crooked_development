@@ -1,0 +1,29 @@
+{
+  "package": {
+    "rooted_path": {
+      "device_supported": false,
+      "host_supported": true
+    },
+    "google_metadata": {
+      "device_supported": false,
+      "host_supported": true
+    }
+  },
+  "run_cargo": false,
+  "tests": true,
+  "module_blocklist": [
+    "crate_health",
+    "crate_health_test_src_lib",
+    "crate_health_test_src_main",
+    "libcrate_health",
+
+    "liblicense_checker",
+    "license_checker_test_src_lib",
+
+    "libname_and_version",
+    "name_and_version_test_src_lib",
+
+    "libname_and_version_proc_macros",
+    "name_and_version_proc_macros_test_src_lib"
+  ]
+}
