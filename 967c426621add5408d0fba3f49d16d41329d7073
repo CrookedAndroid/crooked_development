@@ -22,6 +22,30 @@
       },
       "revId": "967c426621add5408d0fba3f49d16d41329d7073",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6db6e1c_fe0965ba",
+        "filename": "vndk/tools/header-checker/src/repr/protobuf/proto/abi_dump.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-09-03T03:15:38Z",
+      "side": 1,
+      "message": "A declaration can have multiple availability attributes. \"var\" in the test data is an example. To merge the attributes into one field, we need additional logic to compare the versions.",
+      "parentUuid": "66f2ff55_527b53de",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 10
+      },
+      "revId": "967c426621add5408d0fba3f49d16d41329d7073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
