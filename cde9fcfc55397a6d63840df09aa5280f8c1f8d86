@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d9b6ffd_d063550a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-09-03T20:28:18Z",
+      "side": 1,
+      "message": "Aha, I\u0027ll fix that.",
+      "parentUuid": "21ef8a70_a48ee41f",
+      "revId": "cde9fcfc55397a6d63840df09aa5280f8c1f8d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "554c7775_9aa8552e",

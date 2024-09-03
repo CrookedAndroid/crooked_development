@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b92168b_68870e53",
+        "filename": "tools/external_crates/cargo_embargo.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-09-03T20:28:18Z",
+      "side": 1,
+      "message": "Do you need this? You don\u0027t seem to have copied anything.",
+      "revId": "85c3022f728e61bb93c686868d71a505e9498bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
