@@ -32,6 +32,7 @@ pub struct RootedPath {
 }
 
 impl RootedPath {
+    /// Creates a new RootedPath from an absolute root and a path relative to the root.
     pub fn new<P: Into<PathBuf>>(
         root: P,
         path: impl AsRef<Path>,
@@ -47,15 +48,19 @@ impl RootedPath {
         let path = root.join(path);
         Ok(RootedPath { root, path })
     }
+    /// Returns the root.
     pub fn root(&self) -> &Path {
         self.root.as_path()
     }
+    /// Returns the path relative to the root.
     pub fn rel(&self) -> &Path {
         self.path.strip_prefix(&self.root).unwrap()
     }
+    /// Returns the absolute path.
     pub fn abs(&self) -> &Path {
         self.path.as_path()
     }
+    /// Creates a new RootedPath with path adjoined to self.
     pub fn join(&self, path: impl AsRef<Path>) -> Result<RootedPath, RootedPathError> {
         let path = path.as_ref();
         if !path.is_relative() {
@@ -63,6 +68,7 @@ impl RootedPath {
         }
         Ok(RootedPath { root: self.root.clone(), path: self.path.join(path) })
     }
+    /// Creates a new RootedPath with the same root but a new relative directory.
     pub fn with_same_root(&self, path: impl AsRef<Path>) -> Result<RootedPath, RootedPathError> {
         RootedPath::new(self.root.clone(), path)
     }
