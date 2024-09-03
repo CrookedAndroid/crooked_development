@@ -46,6 +46,30 @@
       },
       "revId": "967c426621add5408d0fba3f49d16d41329d7073",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "626fdf42_360cbcec",
+        "filename": "vndk/tools/header-checker/src/repr/protobuf/proto/abi_dump.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-09-03T04:07:29Z",
+      "side": 1,
+      "message": "yeah but for `var` the two availability macros are defining different type of versions, one for \"introduced\" and another for \"obsolete\".\n\nIs it possible for a single symbol to have multiple availability attr that define the same version type, for example two \"introduced\" macro (with same target platfomr) on a single symbol. Does the compiler not forbid this?",
+      "parentUuid": "b6db6e1c_fe0965ba",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 10
+      },
+      "revId": "967c426621add5408d0fba3f49d16d41329d7073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
