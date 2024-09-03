@@ -16,6 +16,24 @@
       "message": "Do you need this? You don\u0027t seem to have copied anything.",
       "revId": "85c3022f728e61bb93c686868d71a505e9498bfb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8694b61_bd73043e",
+        "filename": "tools/external_crates/cargo_embargo.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-03T20:33:39Z",
+      "side": 1,
+      "message": "I have a build.rs that generates rust code for metadata.proto. I was getting build failure because of this. I\u0027m rerunning presubmits to see if this fixes it, but I think you may be right that it doesn\u0027t, in which case I\u0027ll probably need your help figuring out what to do.",
+      "parentUuid": "8b92168b_68870e53",
+      "revId": "85c3022f728e61bb93c686868d71a505e9498bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
