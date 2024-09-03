@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21ef8a70_a48ee41f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-03T18:54:02Z",
+      "side": 1,
+      "message": "Yes, that\u0027s it. When I enable cargo, workspace_excludes works as expected.",
+      "parentUuid": "8b531328_7dd297d2",
+      "revId": "cde9fcfc55397a6d63840df09aa5280f8c1f8d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "554c7775_9aa8552e",
@@ -49,6 +67,24 @@
       "writtenOn": "2024-09-03T18:11:48Z",
       "side": 1,
       "message": "`true` is the default value so you can omit this.",
+      "revId": "cde9fcfc55397a6d63840df09aa5280f8c1f8d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b302595b_4518c7d1",
+        "filename": "tools/external_crates/cargo_embargo.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-03T18:54:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "554c7775_9aa8552e",
       "revId": "cde9fcfc55397a6d63840df09aa5280f8c1f8d86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
