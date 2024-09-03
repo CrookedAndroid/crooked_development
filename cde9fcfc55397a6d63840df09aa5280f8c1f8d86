@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "182dd3c4_8955884f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-09-03T18:11:48Z",
+      "side": 1,
+      "message": "crosvm use it: https://cs.android.com/android/platform/superproject/main/+/main:external/crosvm/cargo_embargo.json;l\u003d36\n\nAny idea what\u0027s different here?",
+      "revId": "cde9fcfc55397a6d63840df09aa5280f8c1f8d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "554c7775_9aa8552e",
+        "filename": "tools/external_crates/cargo_embargo.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-09-03T18:11:48Z",
+      "side": 1,
+      "message": "`true` is the default value so you can omit this.",
+      "revId": "cde9fcfc55397a6d63840df09aa5280f8c1f8d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
