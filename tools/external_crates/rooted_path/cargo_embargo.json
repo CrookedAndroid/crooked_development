@@ -1,0 +1,10 @@
+{
+  "package": {
+    "rooted_path": {
+      "device_supported": false,
+      "host_supported": true
+    }
+  },
+  "run_cargo": false,
+  "tests": true
+}
