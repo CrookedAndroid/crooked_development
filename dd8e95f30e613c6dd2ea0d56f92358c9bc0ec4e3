@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dc687a4_a87ece5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1807569
+      },
+      "writtenOn": "2024-09-03T21:46:57Z",
+      "side": 1,
+      "message": "This was required to generate a valid `Android.bp` for the `zerocopy` crate. I\u0027m wondering if we want to add some logic to handle other permutations of two and three licenses or continue to add specific cases on an as-needed basis?",
+      "revId": "dd8e95f30e613c6dd2ea0d56f92358c9bc0ec4e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
