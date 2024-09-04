@@ -70,6 +70,24 @@
       "parentUuid": "739ead5e_0c87649d",
       "revId": "85c3022f728e61bb93c686868d71a505e9498bfb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c31f4f1_a914fd5b",
+        "filename": "tools/external_crates/cargo_embargo.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-04T15:29:08Z",
+      "side": 1,
+      "message": "OK, I got the protos working with both Soong and Cargo.",
+      "parentUuid": "ecd8c34d_3da4b6b7",
+      "revId": "85c3022f728e61bb93c686868d71a505e9498bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

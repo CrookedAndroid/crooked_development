@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdf693d3_d41bbda5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-04T15:29:08Z",
+      "side": 1,
+      "message": "Now the problem is that the chrono crate in external/rust/crates does not include the \"clock\" feature. Is it possible to add a new host-only variant with this feature enabled?",
+      "revId": "641afb64a6951b82ebbfe4be9d4610c754f845db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
