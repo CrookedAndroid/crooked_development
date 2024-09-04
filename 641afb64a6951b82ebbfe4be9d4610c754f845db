@@ -16,6 +16,24 @@
       "message": "Now the problem is that the chrono crate in external/rust/crates does not include the \"clock\" feature. Is it possible to add a new host-only variant with this feature enabled?",
       "revId": "641afb64a6951b82ebbfe4be9d4610c754f845db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9b97fed_7bf5e661",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-09-04T16:02:46Z",
+      "side": 1,
+      "message": "What do you need the local timezone for? Can you not just use UTC?",
+      "parentUuid": "cdf693d3_d41bbda5",
+      "revId": "641afb64a6951b82ebbfe4be9d4610c754f845db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
