@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//! A mapping from crate names and versions to some associated data.
+
 use std::collections::{BTreeMap, HashSet};
 
 use itertools::Itertools;
@@ -19,25 +21,35 @@ use semver::Version;
 
 use crate::{Error, IsUpgradableTo, NameAndVersion, NamedAndVersioned};
 
+/// A mapping from crate names and versions to some associated data.
 pub trait NameAndVersionMap {
+    /// The data associated with each crate name and version.
     type Value;
 
+    /// Returns a reference to the map field.
     fn map_field(&self) -> &BTreeMap<NameAndVersion, Self::Value>;
+    /// Returns a mutable reference to the map field.
     fn map_field_mut(&mut self) -> &mut BTreeMap<NameAndVersion, Self::Value>;
-
+    /// Tries to insert a new key and value, returning an error if the key is already present.
     fn insert_or_error(&mut self, key: NameAndVersion, val: Self::Value) -> Result<(), Error>;
+    /// Returns the number of crates. Multiple versions of a crate count multiple times.
     fn num_crates(&self) -> usize;
+    /// Returns true if the map contains a crate with the specified name.
     fn contains_name(&self, name: &str) -> bool {
         self.get_versions(name).next().is_some()
     }
+    /// Returns an iterator over versions of a specified crate
     fn get_versions<'a, 'b>(
         &'a self,
         name: &'b str,
     ) -> Box<dyn Iterator<Item = (&'a NameAndVersion, &'a Self::Value)> + 'a>;
+    /// Returns a mutable iterator over versions of a specified crate
     fn get_versions_mut<'a, 'b>(
         &'a mut self,
         name: &'b str,
     ) -> Box<dyn Iterator<Item = (&'a NameAndVersion, &'a mut Self::Value)> + 'a>;
+    /// Get the highest version in the map that is semver-compatible with
+    /// a given crate and version.
     fn get_version_upgradable_from<T: NamedAndVersioned + IsUpgradableTo>(
         &self,
         other: &T,
@@ -50,6 +62,8 @@ pub trait NameAndVersionMap {
         }
         best_version
     }
+    /// Returns an iterator over the map, filtered according to a predicate that acts on
+    /// all the available versions for a crate.
     fn filter_versions<
         'a: 'b,
         'b,
@@ -73,11 +87,14 @@ impl<ValueType> NameAndVersionMap for BTreeMap<NameAndVersion, ValueType> {
     }
 
     fn insert_or_error(&mut self, key: NameAndVersion, val: Self::Value) -> Result<(), Error> {
-        if self.contains_key(&key) {
-            Err(Error::DuplicateVersion(key.name().to_string(), key.version().clone()))
-        } else {
-            self.insert(key, val);
-            Ok(())
+        match self.entry(key) {
+            std::collections::btree_map::Entry::Vacant(e) => {
+                e.insert(val);
+                Ok(())
+            }
+            std::collections::btree_map::Entry::Occupied(e) => {
+                Err(Error::DuplicateVersion(e.key().name().to_string(), e.key().version().clone()))
+            }
         }
     }
 
@@ -134,6 +151,7 @@ impl<ValueType> NameAndVersionMap for BTreeMap<NameAndVersion, ValueType> {
     }
 }
 
+/// Select crates with a single version from an interator.
 pub fn crates_with_single_version<'a, ValueType>(
     versions: &mut dyn Iterator<Item = (&'a NameAndVersion, &'a ValueType)>,
 ) -> HashSet<Version> {
@@ -145,6 +163,7 @@ pub fn crates_with_single_version<'a, ValueType>(
     vset
 }
 
+/// Select crates with multiple versions from an interator.
 pub fn crates_with_multiple_versions<'a, ValueType>(
     versions: &mut dyn Iterator<Item = (&'a NameAndVersion, &'a ValueType)>,
 ) -> HashSet<Version> {
@@ -156,6 +175,7 @@ pub fn crates_with_multiple_versions<'a, ValueType>(
     vset
 }
 
+/// Select the most recent version of each crate from an interator.
 pub fn most_recent_version<'a, ValueType>(
     versions: &mut dyn Iterator<Item = (&'a NameAndVersion, &'a ValueType)>,
 ) -> HashSet<Version> {
