@@ -16,6 +16,24 @@
       "message": "This was required to generate a valid `Android.bp` for the `zerocopy` crate. I\u0027m wondering if we want to add some logic to handle other permutations of two and three licenses or continue to add specific cases on an as-needed basis?",
       "revId": "dd8e95f30e613c6dd2ea0d56f92358c9bc0ec4e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "142c780a_fa957146",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-04T16:17:43Z",
+      "side": 1,
+      "message": "The \"right\" way to do this is probably by using the spdx crate to parse the license expression, as I did here: https://android.googlesource.com/platform/development/+/refs/heads/main/tools/external_crates/license_checker/\n\nBut we haven\u0027t imported the spdx crate to aosp (yet?).\n\nIn practice, the static lookup isn\u0027t too annoying, and probably won\u0027t grow too quickly, as the most common crate license is \"Apache-2.0 OR MIT\", for which we already have some equivalent variants (\"MIT OR Apache-2.0\", \"Apache-2.0/MIT, etc.)",
+      "parentUuid": "2dc687a4_a87ece5e",
+      "revId": "dd8e95f30e613c6dd2ea0d56f92358c9bc0ec4e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
