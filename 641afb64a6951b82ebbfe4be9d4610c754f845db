@@ -34,6 +34,24 @@
       "parentUuid": "cdf693d3_d41bbda5",
       "revId": "641afb64a6951b82ebbfe4be9d4610c754f845db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d94d73_b6f619b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-04T16:11:29Z",
+      "side": 1,
+      "message": "Yup, UTC works. I thought using the local timezone was slightly better, but since we\u0027re just using it to get the date, it\u0027s fine.\n\nLooks like the code compiles with Soong now.",
+      "parentUuid": "b9b97fed_7bf5e661",
+      "revId": "641afb64a6951b82ebbfe4be9d4610c754f845db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
