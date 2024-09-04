@@ -52,6 +52,24 @@
       "parentUuid": "c8694b61_bd73043e",
       "revId": "85c3022f728e61bb93c686868d71a505e9498bfb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd8c34d_3da4b6b7",
+        "filename": "tools/external_crates/cargo_embargo.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-04T14:05:23Z",
+      "side": 1,
+      "message": "OK, but this still needs to be buildable with cargo for awhile, possibly a long while. I will see if I can make both work.",
+      "parentUuid": "739ead5e_0c87649d",
+      "revId": "85c3022f728e61bb93c686868d71a505e9498bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
