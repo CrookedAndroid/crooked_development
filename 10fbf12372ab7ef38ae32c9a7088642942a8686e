@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d50205d_3e073dc7",
+        "filename": "tools/cargo_embargo/src/cargo/cargo_out.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2024-09-04T18:04:52Z",
+      "side": 1,
+      "message": "interesting, i hadn\u0027t realized that `Iterator::find` leaves the iterator usable",
+      "revId": "10fbf12372ab7ef38ae32c9a7088642942a8686e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9615baf1_440096ac",
+        "filename": "tools/cargo_embargo/src/cargo/cargo_out.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2024-09-04T18:04:52Z",
+      "side": 1,
+      "message": "maybe `c.is_ascii_whitespace()`",
+      "range": {
+        "startLine": 99,
+        "startChar": 60,
+        "endLine": 99,
+        "endChar": 69
+      },
+      "revId": "10fbf12372ab7ef38ae32c9a7088642942a8686e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
