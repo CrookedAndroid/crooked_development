@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e9a5b7a_2ade50da",
+        "filename": "tools/external_crates/google_metadata/src/lib.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-09-04T17:00:22Z",
+      "side": 1,
+      "message": "Nit: Remove the extra blank line here.",
+      "revId": "854a9cc2536db1728ca3c1653eafbd65da296e02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
