@@ -16,6 +16,24 @@
       "message": "@jamesfarrell@google.com Are we expecting Trusty to use the monorepo?",
       "revId": "85a66286b66007bfdc13eaaf819317a33ae99227",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "943ab3bf_bfd03fa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-04T16:19:56Z",
+      "side": 1,
+      "message": "Yes.\n\n(My original plan was to not support Trusty in the initial version, but I talked with Stephen yesterday and we now think we need to support Trusty)",
+      "parentUuid": "f31180d2_31208b38",
+      "revId": "85a66286b66007bfdc13eaaf819317a33ae99227",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
