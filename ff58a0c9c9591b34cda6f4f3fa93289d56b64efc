@@ -84,6 +84,52 @@
       "message": "PTAL",
       "revId": "ff58a0c9c9591b34cda6f4f3fa93289d56b64efc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7976d100_49923804",
+        "filename": "scripts/stack_core.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-09-04T23:00:10Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s possible for lib to be None at this point, unless lib is None to begin with. I don\u0027t think that\u0027s possible",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 23
+      },
+      "revId": "ff58a0c9c9591b34cda6f4f3fa93289d56b64efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2df1ceb_1c2fb681",
+        "filename": "scripts/symbol.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-09-04T23:00:10Z",
+      "side": 1,
+      "message": "This function is really close to being a cut-and-paster of CallLlvmSymbolizerForSet. Is there any way to use that function instead of creating another function that has to be maintained that does very similar. If they can\u0027t, maybe there is a way to create something a bit more generic.\n\nAt the very least, you should probably use the json version since that should be easier to use.",
+      "range": {
+        "startLine": 242,
+        "startChar": 4,
+        "endLine": 242,
+        "endChar": 25
+      },
+      "revId": "ff58a0c9c9591b34cda6f4f3fa93289d56b64efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
