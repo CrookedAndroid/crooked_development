@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e5966c_47e0c0cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-04T15:31:04Z",
+      "side": 1,
+      "message": "Now that I sort of know what I\u0027m doing, I may split off the rooted_path stuff because that works as-is.",
+      "revId": "0bcf77bb695f23ca04a92885ed4c59fcb79b885c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
