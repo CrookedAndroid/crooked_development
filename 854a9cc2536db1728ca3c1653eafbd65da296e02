@@ -16,6 +16,24 @@
       "message": "Nit: Remove the extra blank line here.",
       "revId": "854a9cc2536db1728ca3c1653eafbd65da296e02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ea2f110_f58e3bbf",
+        "filename": "tools/external_crates/google_metadata/src/lib.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-04T19:24:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e9a5b7a_2ade50da",
+      "revId": "854a9cc2536db1728ca3c1653eafbd65da296e02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
