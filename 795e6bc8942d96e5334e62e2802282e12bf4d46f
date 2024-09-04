@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f05c5a_e1e82550",
+        "filename": "tools/external_crates/crate_health/src/pseudo_crate.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-09-04T18:00:06Z",
+      "side": 1,
+      "message": "Reminder to add an extra newline at the end too.",
+      "revId": "795e6bc8942d96e5334e62e2802282e12bf4d46f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
