@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e138a0c_8e7bdbe7",
+        "filename": "tools/external_crates/crate_health/src/managed_repo.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-09-04T18:05:29Z",
+      "side": 1,
+      "message": "Is there a reason to keep both these `migrate_*` functions? Should it just be a single `migrate` call? Alternatively, should we even need to \"migrate\" things at all? Why not just store things in the migrated form and write that just at the end?",
+      "revId": "89e7ade0faf959f93c454af5f38a8a80aa404a86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
