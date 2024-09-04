@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f31180d2_31208b38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-09-04T10:57:34Z",
+      "side": 1,
+      "message": "@jamesfarrell@google.com Are we expecting Trusty to use the monorepo?",
+      "revId": "85a66286b66007bfdc13eaaf819317a33ae99227",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
