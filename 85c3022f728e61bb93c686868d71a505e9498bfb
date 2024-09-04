@@ -34,6 +34,24 @@
       "parentUuid": "8b92168b_68870e53",
       "revId": "85c3022f728e61bb93c686868d71a505e9498bfb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "739ead5e_0c87649d",
+        "filename": "tools/external_crates/cargo_embargo.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-09-04T11:09:13Z",
+      "side": 1,
+      "message": "Ah, I see. `build.rs` isn\u0027t allowed or supported in Android. For third-party crates, we work around this by running the `build.rs` when the crate is imported, and using this `copy_out` option to copy the output of the `build.rs` into the source directory where it is checked in as part of the import. But given that this is first-party code you should just get rid of the `build.rs`. If you need to do codegen then use the appropriate Soong rule to do that, e.g. `rust_protobuf` for protos.",
+      "parentUuid": "c8694b61_bd73043e",
+      "revId": "85c3022f728e61bb93c686868d71a505e9498bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
