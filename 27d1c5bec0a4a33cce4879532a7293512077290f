@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f49d500e_d731abc7",
+        "filename": "tools/external_crates/crate_health/src/android_bp.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-09-05T17:25:52Z",
+      "side": 1,
+      "message": "I think this should be a copy rather than a rename, so we start with the existing `Cargo.lock` if there is one.",
+      "revId": "27d1c5bec0a4a33cce4879532a7293512077290f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
