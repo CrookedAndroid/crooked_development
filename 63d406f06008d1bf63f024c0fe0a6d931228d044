@@ -39,6 +39,30 @@
       },
       "revId": "63d406f06008d1bf63f024c0fe0a6d931228d044",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dcc9257_85f035c7",
+        "filename": "tools/external_crates/crate_health/src/migration.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-05T22:36:54Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9a1f5c2b_c396c9cd",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 11
+      },
+      "revId": "63d406f06008d1bf63f024c0fe0a6d931228d044",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
