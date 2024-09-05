@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "187f3dd8_90218cf2",
+        "filename": "tools/external_crates/name_and_version/src/lib.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-05T16:11:20Z",
+      "side": 1,
+      "message": "I think for a thiserror enum the #[error(\"blah\")] declarations serve that purpose, and adding additional comments would actually be worse.\n\n(As I recall, it wants a comment for every variant)",
+      "parentUuid": "ef81edc6_97b79d3b",
+      "revId": "9c847d197bd901c8bc2f650e5ac1c92071fd6458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2aa9e44_bf85f5eb",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-09-05T09:23:42Z",
       "side": 1,
       "message": "Does this need to be a separate trait? Why not just make it part of the `NamedAndVersioned` trait?",
+      "revId": "9c847d197bd901c8bc2f650e5ac1c92071fd6458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f05773_1046d316",
+        "filename": "tools/external_crates/name_and_version/src/name_and_version.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-05T16:11:20Z",
+      "side": 1,
+      "message": "I forget why I separated this out, but I think it was for testability.\n\nSome of the code is admittedly over-engineered; I was blocked for awhile waiting for the design doc to be approved and the monorepo created, and I took the opportunity to try to get better at Rust. For example, I\u0027m not sure the proc macro is really warranted, but I wanted to write one.",
+      "parentUuid": "bbce7628_b8f99163",
       "revId": "9c847d197bd901c8bc2f650e5ac1c92071fd6458",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
