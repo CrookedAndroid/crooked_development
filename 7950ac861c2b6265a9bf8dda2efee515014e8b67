@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f51b687_ca8060c3",
+        "filename": "tools/external_crates/crate_health/src/managed_repo.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1807569
+      },
+      "writtenOn": "2024-09-05T22:34:19Z",
+      "side": 0,
+      "message": "These are definitely not used for Trusty. Might have other users though.",
+      "range": {
+        "startLine": 745,
+        "startChar": 4,
+        "endLine": 745,
+        "endChar": 19
+      },
+      "revId": "7950ac861c2b6265a9bf8dda2efee515014e8b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

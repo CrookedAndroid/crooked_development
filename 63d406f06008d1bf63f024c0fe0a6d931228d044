@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c79c03a8_41e4d250",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1807569
+      },
+      "writtenOn": "2024-09-05T22:34:19Z",
+      "side": 1,
+      "message": "I don\u0027t have +2 on this repo so +1 means LGTM. I would limit the makefile patterns to rules.mk for Trusty though.",
+      "revId": "63d406f06008d1bf63f024c0fe0a6d931228d044",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a1f5c2b_c396c9cd",
+        "filename": "tools/external_crates/crate_health/src/migration.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1807569
+      },
+      "writtenOn": "2024-09-05T22:34:19Z",
+      "side": 1,
+      "message": "For Trusty, \"rules.mk\" should suffice.",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 11
+      },
+      "revId": "63d406f06008d1bf63f024c0fe0a6d931228d044",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
