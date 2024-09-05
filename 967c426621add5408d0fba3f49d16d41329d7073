@@ -94,6 +94,30 @@
       },
       "revId": "967c426621add5408d0fba3f49d16d41329d7073",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4636a62_f2d81b84",
+        "filename": "vndk/tools/header-checker/src/repr/protobuf/proto/abi_dump.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-09-05T06:51:15Z",
+      "side": 1,
+      "message": "As discussed, I would like to keep multiple attributes as they are declared in the source files. We may use them to handle corner cases, e.g., multiple declarations with different attributes, checking availability for more than one target.",
+      "parentUuid": "2d234081_8f436ada",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 10
+      },
+      "revId": "967c426621add5408d0fba3f49d16d41329d7073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
