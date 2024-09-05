@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bb56160_03e0c192",
+        "filename": "tools/external_crates/name_and_version/src/name_and_version.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-05T16:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2aa9e44_bf85f5eb",
+      "revId": "9c847d197bd901c8bc2f650e5ac1c92071fd6458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbce7628_b8f99163",
