@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef81edc6_97b79d3b",
+        "filename": "tools/external_crates/name_and_version/src/lib.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-09-05T09:23:42Z",
+      "side": 1,
+      "message": "How about adding documentation rather than just ignoring the warning?",
+      "revId": "9c847d197bd901c8bc2f650e5ac1c92071fd6458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2aa9e44_bf85f5eb",
+        "filename": "tools/external_crates/name_and_version/src/name_and_version.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-09-05T09:23:42Z",
+      "side": 1,
+      "message": "Where are you getting the missing docs warning from here? I didn\u0027t think a trait implementation required docs.",
+      "revId": "9c847d197bd901c8bc2f650e5ac1c92071fd6458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbce7628_b8f99163",
+        "filename": "tools/external_crates/name_and_version/src/name_and_version.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-09-05T09:23:42Z",
+      "side": 1,
+      "message": "Does this need to be a separate trait? Why not just make it part of the `NamedAndVersioned` trait?",
+      "revId": "9c847d197bd901c8bc2f650e5ac1c92071fd6458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
