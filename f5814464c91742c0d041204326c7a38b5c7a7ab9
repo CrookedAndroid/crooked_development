@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c24b349b_c9091769",
+        "filename": "scripts/cargo2rulesmk.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2024-09-06T19:49:54Z",
+      "side": 1,
+      "message": "We have also had point releases, e.g. https://android.googlesource.com/platform/prebuilts/rust/+/refs/heads/main/linux-x86/1.77.1.p1/. This regex seems to support that by finding the first `X.Y.Z` in the path, but I\u0027m wondering if we need to be more specific?",
+      "revId": "f5814464c91742c0d041204326c7a38b5c7a7ab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
