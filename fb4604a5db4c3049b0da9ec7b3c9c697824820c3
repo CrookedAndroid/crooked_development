@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ea9529_6ff095e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2024-09-09T18:19:54Z",
+      "side": 1,
+      "message": "i\u0027m surprised because we used --cargo-bin before for crosvm. maybe a newer toolchain version changed it",
+      "revId": "fb4604a5db4c3049b0da9ec7b3c9c697824820c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
