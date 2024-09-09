@@ -16,6 +16,24 @@
       "message": "With this we never print more that one candidate object. Intentional?",
       "revId": "f1bdeb9af795cf919a1b143b4f81c63205ebdd44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cfdf1b8_7822f073",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2024-09-09T22:54:10Z",
+      "side": 1,
+      "message": "We discussed this in person last week. I thought this is what we settled on for now?",
+      "parentUuid": "92900b9b_180793c5",
+      "revId": "f1bdeb9af795cf919a1b143b4f81c63205ebdd44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
