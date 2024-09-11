@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91aa4d44_e70d1ca5",
+        "filename": "vndk/tools/header-checker/src/repr/ir_representation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2024-09-11T09:18:20Z",
+      "side": 1,
+      "message": "should we also filter-out unavailable symbols when -aavailability is not specified?\n```suggestion\n\nbool ModuleIR::IsAvailable(const HasAvailabilityAttrs \u0026decl_ir) const {\n  for (const AvailabilityAttrIR \u0026attr : decl_ir.GetAvailabilityAttrs()) {\n    if (attr.IsUnavailable()) {\n      return false;\n    }\n    if (availability_.has_value()) {\n      if (auto introduced \u003d attr.GetIntroduced();\n          introduced.has_value() \u0026\u0026 availability_.value() \u003c introduced.value()) {\n        return false;\n      }\n      if (auto obsoleted \u003d attr.GetObsoleted();\n          obsoleted.has_value() \u0026\u0026 availability_.value() \u003e\u003d obsoleted.value()) {\n        return false;\n      }\n    }\n  }\n  return true;\n}\n```",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 1
+      },
+      "revId": "838f803dae1001136f9d11d94efe6842de53ae2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
