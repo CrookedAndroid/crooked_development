@@ -16,6 +16,24 @@
       "message": "There should probably be an official bug stating that this is turned down, and the sources should also be removed, unless this is in use some other way (in which cae, I really do think we need to find appropriate people to maintain it).",
       "revId": "ef57f10c080c01e081df7cfdca16d4207ed253cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e36ddcc_b3bbf06c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-09-11T20:15:56Z",
+      "side": 1,
+      "message": "Discussed via chat, so I think we\u0027re good here.",
+      "parentUuid": "99d9ae12_1a518b6a",
+      "revId": "ef57f10c080c01e081df7cfdca16d4207ed253cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
