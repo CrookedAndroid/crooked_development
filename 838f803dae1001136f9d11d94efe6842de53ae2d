@@ -22,6 +22,30 @@
       },
       "revId": "838f803dae1001136f9d11d94efe6842de53ae2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d397651_0f6fe85c",
+        "filename": "vndk/tools/header-checker/src/repr/ir_representation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2024-09-12T05:57:26Z",
+      "side": 1,
+      "message": "I would like to keep the filtering logic compatible with the old one\nso that I can completely turn off the filter in case it causes problems.\n\nActually bionic headers do not support \"unavailable\". It should not make a difference.",
+      "parentUuid": "91aa4d44_e70d1ca5",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 1
+      },
+      "revId": "838f803dae1001136f9d11d94efe6842de53ae2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
