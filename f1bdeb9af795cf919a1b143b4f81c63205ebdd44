@@ -51,6 +51,23 @@
       "message": "OK, let\u0027s not overcomplicate this",
       "revId": "f1bdeb9af795cf919a1b143b4f81c63205ebdd44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01dce5f6_ae1abc2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2024-09-17T18:19:42Z",
+      "side": 1,
+      "message": "PTAL",
+      "revId": "f1bdeb9af795cf919a1b143b4f81c63205ebdd44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
