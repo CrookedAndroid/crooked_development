@@ -138,6 +138,30 @@
       },
       "revId": "f1bdeb9af795cf919a1b143b4f81c63205ebdd44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d74bcc0_6da0c9bc",
+        "filename": "scripts/stack_core.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2024-09-25T21:00:31Z",
+      "side": 1,
+      "message": "I don\u0027t understand why that wouldn\u0027t need the whence values? We still need to know it, and not having them would make the comparison harder. It doesn\u0027t matter if we sort or just compare.",
+      "parentUuid": "d75c13d4_f3dc4db2",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 78
+      },
+      "revId": "f1bdeb9af795cf919a1b143b4f81c63205ebdd44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
