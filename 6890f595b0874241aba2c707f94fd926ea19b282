@@ -46,6 +46,30 @@
       },
       "revId": "6890f595b0874241aba2c707f94fd926ea19b282",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be3f2617_e564dac4",
+        "filename": "tools/external_crates/crate_health/src/managed_crate.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-09-27T20:01:20Z",
+      "side": 1,
+      "message": "It\u0027s actually not so straightforward to make idiomatic, because entry.file_name() is an OsString, not a String.\n\nSo a match expression doesn\u0027t seem to work.\n\nYou also can\u0027t easily do [...].contains(entry.file_name()) because b\"foo\" doesn\u0027t have the same type as b\"foobar\" unlike \"foo\" and \"foobar\". You can probably construct OsStr\u0027s from the file names, but it\u0027s not going to be much nicer.",
+      "parentUuid": "bae956be_450af2b8",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 17
+      },
+      "revId": "6890f595b0874241aba2c707f94fd926ea19b282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
