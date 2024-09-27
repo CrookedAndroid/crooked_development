@@ -13,8 +13,9 @@
 // limitations under the License.
 
 use std::{
-    fs::{copy, read_dir, read_link, remove_dir_all, rename},
+    fs::{copy, read_dir, read_link, read_to_string, remove_dir_all, rename, write},
     os::unix::fs::symlink,
+    path::PathBuf,
     process::{Command, Output},
     str::from_utf8,
 };
@@ -183,8 +184,8 @@ impl ManagedCrate<New> {
         }
         Ok(())
     }
-    fn apply_patches(&self) -> Result<Vec<(String, Output)>> {
-        let mut patch_output = Vec::new();
+    fn patches(&self) -> Result<Vec<PathBuf>> {
+        let mut patches = Vec::new();
         let patch_dir = self.patch_dir();
         if patch_dir.abs().exists() {
             for entry in
@@ -197,19 +198,81 @@ impl ManagedCrate<New> {
                 {
                     continue;
                 }
-                let entry_path = entry.path();
-                let output = Command::new("patch")
-                    .args(["-p1", "-l", "--no-backup-if-mismatch", "-i"])
-                    .arg(&entry_path)
-                    .current_dir(self.staging_path())
-                    .output()?;
-                patch_output.push((
-                    String::from_utf8_lossy(entry.file_name().as_encoded_bytes()).to_string(),
-                    output,
-                ));
+                patches.push(entry.path());
             }
         }
+
+        Ok(patches)
+    }
+    fn apply_patches(&self) -> Result<Vec<(String, Output)>> {
+        let mut patch_output = Vec::new();
+        for patch in self.patches()? {
+            let output = Command::new("patch")
+                .args(["-p1", "-l", "--no-backup-if-mismatch", "-i"])
+                .arg(&patch)
+                .current_dir(self.staging_path())
+                .output()?;
+            patch_output.push((
+                String::from_utf8_lossy(patch.file_name().unwrap().as_encoded_bytes()).to_string(),
+                output,
+            ));
+        }
         Ok(patch_output)
+    }
+    pub fn recontextualize_patches(&self) -> Result<()> {
+        for patch in self.patches()? {
+            println!("{}", patch.display());
+            Command::new("patch")
+                .args(["-R", "-p1", "-l", "--no-backup-if-mismatch", "-i"])
+                .arg(&patch)
+                .current_dir(self.android_crate_path())
+                .spawn()?
+                .wait()?;
+            Command::new("git")
+                .args(["add", "."])
+                .current_dir(self.android_crate_path())
+                .spawn()?
+                .wait()?;
+            let output = Command::new("git")
+                .args([
+                    "diff",
+                    format!("--relative=crates/{}", self.name()).as_str(),
+                    "-p",
+                    "--stat",
+                    "-R",
+                    "--staged",
+                    ".",
+                ])
+                .current_dir(self.android_crate_path())
+                .output()?;
+            Command::new("git")
+                .args(["restore", "--staged", "."])
+                .current_dir(self.android_crate_path())
+                .spawn()?
+                .wait()?;
+            Command::new("git")
+                .args(["restore", "."])
+                .current_dir(self.android_crate_path())
+                .spawn()?
+                .wait()?;
+            Command::new("git")
+                .args(["clean", "-f", "."])
+                .current_dir(self.android_crate_path())
+                .spawn()?
+                .wait()?;
+            let patch_contents = read_to_string(&patch)?;
+            if let Some((h, _)) = patch_contents.split_once("\n---\n") {
+                let last = patch_contents.rfind("-- \n").unwrap();
+                write(
+                    patch,
+                    [h.as_bytes(), b"\n---\n", &output.stdout, patch_contents[last..].as_bytes()]
+                        .concat(),
+                )?;
+            } else {
+                write(patch, output.stdout)?;
+            }
+        }
+        Ok(())
     }
     fn diff_android_bp(&self) -> Result<Output> {
         Ok(Command::new("diff")
@@ -232,7 +295,7 @@ impl ManagedCrate<New> {
             .output()?)
     }
     fn patch_dir(&self) -> RootedPath {
-        self.staging_path().join("patches").unwrap()
+        self.android_crate_path().join("patches").unwrap()
     }
     pub fn regenerate(self, update_metadata: bool) -> Result<ManagedCrate<Staged>> {
         // Should be <New>

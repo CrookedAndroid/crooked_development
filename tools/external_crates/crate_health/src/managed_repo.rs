@@ -26,7 +26,9 @@ use glob::glob;
 use google_metadata::GoogleMetadata;
 use itertools::Itertools;
 use license_checker::find_licenses;
-use name_and_version::{NameAndVersionMap, NameAndVersionRef, NamedAndVersioned};
+use name_and_version::{
+    IsUpgradableTo, MatchesRelaxed, NameAndVersionMap, NameAndVersionRef, NamedAndVersioned,
+};
 use rooted_path::RootedPath;
 use semver::Version;
 use spdx::Licensee;
@@ -34,7 +36,8 @@ use spdx::Licensee;
 use crate::{
     cargo_embargo_autoconfig, copy_dir, most_restrictive_type,
     pseudo_crate::{CargoVendorClean, CargoVendorDirty},
-    update_module_license_files, Crate, CrateCollection, ManagedCrate, PseudoCrate,
+    update_module_license_files, Crate, CrateCollection, CratesIoIndex, DependencyFilter,
+    ManagedCrate, PseudoCrate,
 };
 
 pub struct ManagedRepo {
@@ -59,6 +62,11 @@ impl ManagedRepo {
     }
     fn legacy_dir_for(&self, crate_name: &str) -> RootedPath {
         self.path.with_same_root("external/rust/crates").unwrap().join(crate_name).unwrap()
+    }
+    fn legacy_crates(&self) -> Result<CrateCollection> {
+        let mut cc = self.new_cc();
+        cc.add_from("external/rust/crates")?;
+        Ok(cc)
     }
     fn new_cc(&self) -> CrateCollection {
         CrateCollection::new(self.path.root())
@@ -551,6 +559,144 @@ impl ManagedRepo {
             metadata.write()?;
         }
 
+        Ok(())
+    }
+    pub fn check_deps(&self) -> Result<()> {
+        let mut cc = self.new_cc();
+        cc.add_from(self.managed_dir().rel())?;
+
+        let legacy_crates = self.legacy_crates()?;
+
+        let mut crates_io = CratesIoIndex::new_offline()?;
+
+        for krate in cc.map_field().values() {
+            let mut printed = false;
+            let cio_crate = crates_io.get_crate(krate.name())?;
+            let current_version = cio_crate.get_version(krate.version()).ok_or(anyhow!(
+                "{} v{} not found",
+                krate.name(),
+                krate.version()
+            ))?;
+            // let mut deps = BTreeMap::new();
+            for (dep, req) in current_version.android_deps_with_version_reqs() {
+                // let mut satisfied = false;
+                for (nv, dep_crate) in
+                    if cc.contains_name(dep.crate_name()) { &cc } else { &legacy_crates }
+                        .get_versions(dep.crate_name())
+                {
+                    if req.matches_relaxed(nv.version()) {
+                        // println!("  Requirement {} {} satisfied by {} at {}", dep.crate_name(), dep.requirement(), nv.version(), dep_crate.path());
+                        // satisfied = true;
+                        break;
+                    } else {
+                        if !printed {
+                            println!("{} v{}", krate.name(), krate.version());
+                            printed = true;
+                        }
+                        println!(
+                            "  Requirement {} {} not satisfied by {} at {}",
+                            dep.crate_name(),
+                            dep.requirement(),
+                            nv.version(),
+                            dep_crate.path()
+                        );
+                    }
+                }
+                // if !satisfied {
+                //     println!("  Unsatisfied requirement {} {} {}", dep.crate_name(), dep.requirement(), dep.target().unwrap_or(""));
+                // }
+            }
+            // for version in cio_crate.versions_gt(krate.version()) {
+            //     if version.
+            // }
+        }
+
+        Ok(())
+    }
+    pub fn find_updatable(&self) -> Result<()> {
+        let mut cc = self.new_cc();
+        cc.add_from(self.managed_dir().rel())?;
+
+        let mut crates_io = CratesIoIndex::new_offline()?;
+        for krate in cc.map_field().values() {
+            let mut printed = false;
+            let cio_crate = crates_io.get_crate(krate.name())?;
+            for version in cio_crate.versions_gt(krate.version()) {
+                if !printed {
+                    println!("{} v{}", krate.name(), krate.version());
+                    printed = true
+                }
+                println!("  v{}", version.version());
+            }
+        }
+        Ok(())
+    }
+    pub fn find_updates(&self, crate_name: impl AsRef<str>) -> Result<()> {
+        let crate_name = crate_name.as_ref();
+        let mut cc = self.new_cc();
+        cc.add_from(self.managed_dir().rel())?;
+
+        let legacy_crates = self.legacy_crates()?;
+
+        let mut crates_io = CratesIoIndex::new_offline()?;
+
+        let (_, krate) = cc.get_versions(crate_name).next().unwrap();
+        println!("Found {} v{}", krate.name(), krate.version());
+        let patch_dir = krate.path().join("patches").unwrap();
+        if patch_dir.abs().exists() {
+            println!("This crate has patches, so expect a fun time trying to update it:");
+            for patch in read_dir(patch_dir)? {
+                println!("  {}", Path::new(patch?.file_name().as_os_str()).display());
+            }
+        }
+
+        let cio_crate = crates_io.get_crate(crate_name)?;
+
+        for version in cio_crate.versions_gt(krate.version()) {
+            println!("Version {}", version.version());
+            let parsed_version = semver::Version::parse(version.version())?;
+            if !krate
+                .is_upgradable_to_relaxed(&NameAndVersionRef::new(krate.name(), &parsed_version))
+            {
+                println!("  Not semver-compatible, even by relaxed standards");
+                // continue;
+            }
+            for (dep, req) in version.android_deps_with_version_reqs() {
+                if !cc.contains_name(dep.crate_name())
+                    && !legacy_crates.contains_name(dep.crate_name())
+                {
+                    println!(
+                        "  Dep {} {} has not been imported to Android",
+                        dep.crate_name(),
+                        dep.requirement()
+                    );
+                    continue;
+                }
+                for (_, dep_crate) in
+                    if cc.contains_name(dep.crate_name()) { &cc } else { &legacy_crates }
+                        .get_versions(dep.crate_name())
+                {
+                    if !req.matches_relaxed(dep_crate.version()) {
+                        println!(
+                            "  Dep {} {} is not satisfied by v{} at {}",
+                            dep.crate_name(),
+                            dep.requirement(),
+                            dep_crate.version(),
+                            dep_crate.path()
+                        );
+                    }
+                }
+            }
+        }
+
+        Ok(())
+    }
+    pub fn recontextualize_patches(&self) -> Result<()> {
+        let pseudo_crate = self.pseudo_crate().vendor()?;
+        for crate_name in pseudo_crate.deps().keys().map(|k| k.as_str()) {
+            let mc = self.managed_crate_for(crate_name, &pseudo_crate)?;
+            mc.recontextualize_patches()?;
+        }
         Ok(())
     }
 }

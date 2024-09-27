@@ -69,6 +69,7 @@ impl Crate {
     pub fn license(&self) -> Option<&str> {
         self.manifest.metadata().license.as_deref()
     }
+    #[allow(dead_code)]
     pub fn license_file(&self) -> Option<&str> {
         self.manifest.metadata().license_file.as_deref()
     }

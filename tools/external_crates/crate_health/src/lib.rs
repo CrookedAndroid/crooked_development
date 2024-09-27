@@ -22,28 +22,30 @@ use anyhow::{anyhow, Context, Result};
 use semver::Version;
 use thiserror::Error;
 
-pub use self::crate_type::Crate;
+use self::crate_type::Crate;
 mod crate_type;
 
-pub use self::crate_collection::CrateCollection;
+use self::crate_collection::CrateCollection;
 mod crate_collection;
 
-pub use self::pseudo_crate::PseudoCrate;
+use self::pseudo_crate::PseudoCrate;
 mod pseudo_crate;
 
-pub use self::android_bp::{
-    build_cargo_embargo, cargo_embargo_autoconfig, maybe_build_cargo_embargo, run_cargo_embargo,
-};
+pub use self::android_bp::maybe_build_cargo_embargo;
+use self::android_bp::{cargo_embargo_autoconfig, run_cargo_embargo};
 mod android_bp;
 
-pub use self::license::{most_restrictive_type, update_module_license_files};
+use self::license::{most_restrictive_type, update_module_license_files};
 mod license;
 
 pub use self::managed_repo::ManagedRepo;
 mod managed_repo;
 
-pub use self::managed_crate::ManagedCrate;
+use self::managed_crate::ManagedCrate;
 mod managed_crate;
+
+use self::crates_io::{CratesIoIndex, DependencyFilter};
+mod crates_io;
 
 #[derive(Error, Debug)]
 pub enum CrateError {

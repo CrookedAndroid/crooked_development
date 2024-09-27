@@ -141,6 +141,30 @@ pub trait IsUpgradableTo: NamedAndVersioned {
             && VersionReq::parse(&self.version().to_string())
                 .is_ok_and(|req| req.matches(other.version()))
     }
+    fn is_upgradable_to_relaxed(&self, other: &impl NamedAndVersioned) -> bool {
+        self.name() == other.name()
+            && VersionReq::parse(&self.version().to_string())
+                .is_ok_and(|req| req.matches_relaxed(other.version()))
+    }
+}
+
+pub trait MatchesRelaxed {
+    fn matches_relaxed(&self, version: &Version) -> bool;
+}
+impl MatchesRelaxed for VersionReq {
+    fn matches_relaxed(&self, version: &Version) -> bool {
+        if self.matches(version) {
+            return true;
+        }
+        if self.comparators.len() == 1 && self.comparators[0].major == 0 && version.major == 0 {
+            let mut fake_v = version.clone();
+            fake_v.major = 31337;
+            let mut fake_req = self.clone();
+            fake_req.comparators[0].major = 31337;
+            return fake_req.matches(&fake_v);
+        }
+        false
+    }
 }
 
 impl IsUpgradableTo for NameAndVersion {}

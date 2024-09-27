@@ -118,6 +118,7 @@ impl PseudoCrate<CargoVendorClean> {
     }
     fn crates(&self) -> &CrateCollection {
         self.extra.crates.get_or_init(|| {
+            // DO NOT SUBMIT!!
             Command::new("cargo")
                 .args(["vendor"])
                 .current_dir(&self.path)
@@ -142,27 +143,27 @@ impl PseudoCrate<CargoVendorClean> {
     fn mark_dirty(self) -> PseudoCrate<CargoVendorDirty> {
         PseudoCrate { path: self.path, extra: CargoVendorDirty {} }
     }
-    pub fn cargo_add(
-        self,
-        krate: &impl NamedAndVersioned,
-    ) -> Result<PseudoCrate<CargoVendorDirty>> {
-        let dirty = self.mark_dirty();
-        dirty.cargo_add(krate)?;
-        Ok(dirty)
-    }
-    pub fn cargo_add_unpinned(
-        self,
-        krate: &impl NamedAndVersioned,
-    ) -> Result<PseudoCrate<CargoVendorDirty>> {
-        let dirty: PseudoCrate<CargoVendorDirty> = self.mark_dirty();
-        dirty.cargo_add_unpinned(krate)?;
-        Ok(dirty)
-    }
-    pub fn cargo_add_unversioned(self, crate_name: &str) -> Result<PseudoCrate<CargoVendorDirty>> {
-        let dirty: PseudoCrate<CargoVendorDirty> = self.mark_dirty();
-        dirty.cargo_add_unversioned(crate_name)?;
-        Ok(dirty)
-    }
+    // pub fn cargo_add(
+    //     self,
+    //     krate: &impl NamedAndVersioned,
+    // ) -> Result<PseudoCrate<CargoVendorDirty>> {
+    //     let dirty = self.mark_dirty();
+    //     dirty.cargo_add(krate)?;
+    //     Ok(dirty)
+    // }
+    // pub fn cargo_add_unpinned(
+    //     self,
+    //     krate: &impl NamedAndVersioned,
+    // ) -> Result<PseudoCrate<CargoVendorDirty>> {
+    //     let dirty: PseudoCrate<CargoVendorDirty> = self.mark_dirty();
+    //     dirty.cargo_add_unpinned(krate)?;
+    //     Ok(dirty)
+    // }
+    // pub fn cargo_add_unversioned(self, crate_name: &str) -> Result<PseudoCrate<CargoVendorDirty>> {
+    //     let dirty: PseudoCrate<CargoVendorDirty> = self.mark_dirty();
+    //     dirty.cargo_add_unversioned(crate_name)?;
+    //     Ok(dirty)
+    // }
     pub fn remove(self, crate_name: &str) -> Result<PseudoCrate<CargoVendorDirty>> {
         let dirty: PseudoCrate<CargoVendorDirty> = self.mark_dirty();
         dirty.remove(crate_name)?;
@@ -174,6 +175,7 @@ impl PseudoCrate<CargoVendorDirty> {
     pub fn new(path: RootedPath) -> Self {
         PseudoCrate { path, extra: CargoVendorDirty {} }
     }
+    #[allow(dead_code)]
     pub fn init<'a>(
         &self,
         crates: impl Iterator<Item = &'a (impl NamedAndVersioned + 'a)>,

@@ -78,6 +78,16 @@ enum Cmd {
     FixLicenses {},
     /// Fix up METADATA files
     FixMetadata {},
+    /// Check declared dependencies of all crates, and find ones that are unsatisfied.
+    CheckDeps {},
+    /// Find crates with newer versions on crates.io.
+    FindUpdatable {},
+    /// Find newer versions of a crate and assess their feasibility.
+    FindUpdates {
+        /// The crate name.
+        crate_name: String,
+    },
+    RecontextualizePatches {},
 }
 
 fn parse_crate_list(arg: &str) -> Result<BTreeSet<String>> {
@@ -112,5 +122,9 @@ fn main() -> Result<()> {
         Cmd::Import { crate_name } => managed_repo.import(&crate_name),
         Cmd::FixLicenses {} => managed_repo.fix_licenses(),
         Cmd::FixMetadata {} => managed_repo.fix_metadata(),
+        Cmd::CheckDeps {} => managed_repo.check_deps(),
+        Cmd::FindUpdatable {} => managed_repo.find_updatable(),
+        Cmd::FindUpdates { crate_name } => managed_repo.find_updates(crate_name),
+        Cmd::RecontextualizePatches {} => managed_repo.recontextualize_patches(),
     }
 }
