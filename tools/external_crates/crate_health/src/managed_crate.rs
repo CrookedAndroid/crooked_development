@@ -61,7 +61,7 @@ static SYMLINKS: &[&str] = &["LICENSE", "NOTICE"];
 
 impl<State: ManagedCrateState> ManagedCrate<State> {
     pub fn name(&self) -> &str {
-        self.vendored_crate.name()
+        self.android_crate.name()
     }
     pub fn vendored_version(&self) -> &Version {
         self.vendored_crate.version()
@@ -248,12 +248,10 @@ impl ManagedCrate<New> {
             writeback |= metadata.migrate_homepage();
             writeback |= metadata.migrate_archive();
             writeback |= metadata.remove_deprecated_url();
-            if staged.android_crate.version() != staged.vendored_crate.version() {
+            if staged.android_crate.version() != staged.vendored_version() {
                 metadata.set_date_to_today()?;
-                metadata.set_version_and_urls(
-                    staged.vendored_crate.name(),
-                    staged.vendored_crate.version().to_string(),
-                )?;
+                metadata
+                    .set_version_and_urls(staged.name(), staged.vendored_version().to_string())?;
                 writeback |= true;
             }
             if writeback {
@@ -276,7 +274,7 @@ impl ManagedCrate<Staged> {
                 if !output.status.success() {
                     return Err(anyhow!(
                         "Failed to patch {} with {}\nstdout:\n{}\nstderr:\n{}",
-                        self.vendored_crate.name(),
+                        self.name(),
                         patch,
                         from_utf8(&output.stdout)?,
                         from_utf8(&output.stderr)?
@@ -288,7 +286,7 @@ impl ManagedCrate<Staged> {
             let output = self.cargo_embargo_output();
             return Err(anyhow!(
                 "cargo_embargo execution failed for {}:\nstdout:\n{}\nstderr:\n:{}",
-                self.vendored_crate.name(),
+                self.name(),
                 from_utf8(&output.stdout)?,
                 from_utf8(&output.stderr)?
             ));
