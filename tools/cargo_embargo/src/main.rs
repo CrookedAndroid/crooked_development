@@ -697,6 +697,12 @@ fn generate_android_bp_package_header(
             if crates.iter().all(|c| c.license.as_ref() == Some(license)) {
                 let mut modules = Vec::new();
                 let license = choose_license(license);
+
+                // could do more validation, but the usual case is more licenses
+                if license.contains(char::is_whitespace) {
+                    return Err(anyhow!("Unrecognized license: {license}"));
+                }
+
                 let license_name = format!("external_rust_crates_{}_license", package_name);
 
                 let mut package_module = BpModule::new("package".to_string());
