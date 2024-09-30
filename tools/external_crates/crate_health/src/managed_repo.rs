@@ -32,7 +32,9 @@ use semver::Version;
 use spdx::Licensee;
 
 use crate::{
-    cargo_embargo_autoconfig, copy_dir, most_restrictive_type,
+    cargo_embargo_autoconfig, copy_dir,
+    crates_io::CratesIoIndex,
+    most_restrictive_type,
     pseudo_crate::{CargoVendorClean, CargoVendorDirty},
     update_module_license_files, Crate, CrateCollection, ManagedCrate, PseudoCrate,
 };
@@ -559,6 +561,31 @@ impl ManagedRepo {
         for crate_name in crates {
             let mc = self.managed_crate_for(crate_name.as_ref(), &pseudo_crate)?;
             mc.recontextualize_patches()?;
+        }
+        Ok(())
+    }
+    pub fn updatable_crates(&self) -> Result<()> {
+        let mut cc = self.new_cc();
+        cc.add_from(self.managed_dir().rel())?;
+
+        let mut crates_io = CratesIoIndex::new()?;
+        for krate in cc.map_field().values() {
+            let cio_crate = crates_io.get_crate(krate.name())?;
+            let upgrades =
+                cio_crate.versions_gt(krate.version()).map(|v| v.version()).collect::<Vec<_>>();
+            if !upgrades.is_empty() {
+                println!(
+                    "{} v{}:\n  {}",
+                    krate.name(),
+                    krate.version(),
+                    upgrades
+                        .iter()
+                        .chunks(10)
+                        .into_iter()
+                        .map(|mut c| { c.join(", ") })
+                        .join(",\n  ")
+                );
+            }
         }
         Ok(())
     }

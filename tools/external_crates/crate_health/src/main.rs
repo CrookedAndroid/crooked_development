@@ -89,6 +89,8 @@ enum Cmd {
         #[arg(long, default_value_t = false)]
         all: bool,
     },
+    /// Find crates with a newer version on crates.io
+    UpdatableCrates {},
 }
 
 fn parse_crate_list(arg: &str) -> Result<BTreeSet<String>> {
@@ -132,5 +134,6 @@ fn main() -> Result<()> {
                 crates.into_iter()
             })
         }
+        Cmd::UpdatableCrates {} => managed_repo.updatable_crates(),
     }
 }

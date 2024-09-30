@@ -47,6 +47,8 @@ mod managed_crate;
 
 mod patch;
 
+mod crates_io;
+
 #[derive(Error, Debug)]
 pub enum CrateError {
     #[error("Virtual crate: {0}")]
