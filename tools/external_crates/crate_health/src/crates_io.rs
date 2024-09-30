@@ -106,7 +106,7 @@ pub struct CratesIoCrate {
 }
 
 impl CratesIoCrate {
-    pub fn versions<'a>(&'a self) -> impl Iterator<Item = &'a Version> {
+    pub fn versions<'a>(&'a self) -> impl DoubleEndedIterator<Item = &'a Version> {
         self.krate.versions().iter().filter(|v| {
             !v.is_yanked()
                 && semver::Version::parse(v.version()).map_or(false, |parsed| parsed.pre.is_empty())
@@ -115,7 +115,7 @@ impl CratesIoCrate {
     pub fn versions_gt<'a>(
         &'a self,
         version: &'a semver::Version,
-    ) -> impl Iterator<Item = &'a Version> {
+    ) -> impl DoubleEndedIterator<Item = &'a Version> {
         self.versions().filter(|v| {
             semver::Version::parse(v.version()).map_or(false, |parsed| parsed.gt(version))
         })

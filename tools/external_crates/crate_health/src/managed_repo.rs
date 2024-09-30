@@ -602,7 +602,7 @@ impl ManagedRepo {
         // TODO: Don't read every crate.
         cc.add_from(self.managed_dir().rel())?;
 
-        let legacy_crates = self.legacy_crates()?;
+        let legacy_crates: CrateCollection = self.legacy_crates()?;
 
         let mut crates_io = CratesIoIndex::new_offline()?;
 
@@ -674,6 +674,75 @@ impl ManagedRepo {
             }
         }
 
+        Ok(())
+    }
+    pub fn suggest_updates(&self, consider_patched_crates: bool) -> Result<()> {
+        let mut cc = self.new_cc();
+        cc.add_from(self.managed_dir().rel())?;
+
+        let legacy_crates: CrateCollection = self.legacy_crates()?;
+
+        let mut crates_io = CratesIoIndex::new()?;
+        for krate in cc.map_field().values() {
+            let cio_crate = crates_io.get_crate(krate.name())?;
+
+            let base_version = cio_crate.get_version(krate.version());
+            if base_version.is_none() {
+                println!(
+                    "Skipping crate {} v{} because it was not found in crates.io",
+                    krate.name(),
+                    krate.version()
+                );
+                continue;
+            }
+            let base_version = base_version.unwrap();
+            let mut base_deps = HashMap::new();
+            for (dep, _) in base_version.android_deps_with_version_reqs() {
+                base_deps.insert(dep.crate_name().to_string(), dep.requirement());
+            }
+
+            let patch_dir = krate.path().join("patches").unwrap();
+            if patch_dir.abs().exists() && !consider_patched_crates {
+                println!(
+                    "Skipping crate {} v{} because it has patches",
+                    krate.name(),
+                    krate.version()
+                );
+                continue;
+            }
+
+            for version in cio_crate.versions_gt(krate.version()).rev() {
+                let parsed_version = semver::Version::parse(version.version())?;
+                if !krate.is_upgradable_to_relaxed(&NameAndVersionRef::new(
+                    krate.name(),
+                    &parsed_version,
+                )) {
+                    continue;
+                }
+                if !version.android_deps_with_version_reqs().any(|(dep, req)| {
+                    if !dep.is_changed_dep(&base_deps) {
+                        return false;
+                    }
+                    for (_, dep_crate) in
+                        if cc.contains_name(dep.crate_name()) { &cc } else { &legacy_crates }
+                            .get_versions(dep.crate_name())
+                    {
+                        if req.matches_relaxed(dep_crate.version()) {
+                            return false;
+                        }
+                    }
+                    true
+                }) {
+                    println!(
+                        "Upgrade crate {} v{} to {}",
+                        krate.name(),
+                        krate.version(),
+                        version.version()
+                    );
+                    break;
+                }
+            }
+        }
         Ok(())
     }
 }
