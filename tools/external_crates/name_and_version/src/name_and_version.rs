@@ -141,6 +141,35 @@ pub trait IsUpgradableTo: NamedAndVersioned {
             && VersionReq::parse(&self.version().to_string())
                 .is_ok_and(|req| req.matches(other.version()))
     }
+    /// Returns true if the object version is semver-compatible with 'other', or if
+    /// both have a major version of 0 and the other version is greater.
+    fn is_upgradable_to_relaxed(&self, other: &impl NamedAndVersioned) -> bool {
+        self.name() == other.name()
+            && VersionReq::parse(&self.version().to_string())
+                .is_ok_and(|req| req.matches_relaxed(other.version()))
+    }
+}
+
+/// A trait for relaxed semver compatibility. Major versions of 0 are treated as if they were non-zero.
+pub trait MatchesRelaxed {
+    /// Returns true if the version matches the req, but treats
+    /// major version of zero as if it were non-zero.
+    fn matches_relaxed(&self, version: &Version) -> bool;
+}
+impl MatchesRelaxed for VersionReq {
+    fn matches_relaxed(&self, version: &Version) -> bool {
+        if self.matches(version) {
+            return true;
+        }
+        if self.comparators.len() == 1 && self.comparators[0].major == 0 && version.major == 0 {
+            let mut fake_v = version.clone();
+            fake_v.major = 1;
+            let mut fake_req = self.clone();
+            fake_req.comparators[0].major = 1;
+            return fake_req.matches(&fake_v);
+        }
+        false
+    }
 }
 
 impl IsUpgradableTo for NameAndVersion {}

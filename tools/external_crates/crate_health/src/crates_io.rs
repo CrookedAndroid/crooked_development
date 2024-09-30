@@ -158,6 +158,22 @@ impl IsAndroid for Dependency {
     }
 }
 
+pub trait NewDeps {
+    fn is_new_dep(&self, base_deps: &HashMap<String, &str>) -> bool;
+    fn is_changed_dep(&self, base_deps: &HashMap<String, &str>) -> bool;
+}
+
+impl NewDeps for Dependency {
+    fn is_new_dep(&self, base_deps: &HashMap<String, &str>) -> bool {
+        !base_deps.contains_key(self.crate_name())
+    }
+
+    fn is_changed_dep(&self, base_deps: &HashMap<String, &str>) -> bool {
+        let base_dep = base_deps.get(self.crate_name());
+        base_dep.is_none() || base_dep.is_some_and(|base_req| *base_req != self.requirement())
+    }
+}
+
 fn is_android(target: &str) -> bool {
     // println!("    target = {}", target);
     let expr = cfg_expr::Expression::parse(target);
