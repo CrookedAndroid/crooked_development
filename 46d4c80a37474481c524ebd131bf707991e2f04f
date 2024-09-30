@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16cd7d4b_54766c4b",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2024-09-30T21:50:01Z",
+      "side": 1,
+      "message": "maybe we can have `choose_license` return an error if the license isn\u0027t explicitly allowlisted? would need to add `Apache-2.0` and `MIT` as explicit cases. if you ignore the expression language, i think the list of valid licenses is pretty small and, IIUC, in this CL right now you are basically trying to make any non-trivial expression fail\n\ni\u0027ll defer to Andrew though",
+      "range": {
+        "startLine": 699,
+        "startChar": 30,
+        "endLine": 699,
+        "endChar": 54
+      },
+      "revId": "46d4c80a37474481c524ebd131bf707991e2f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
