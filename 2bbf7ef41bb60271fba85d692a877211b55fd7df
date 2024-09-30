@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "271ede74_8546e02a",
+        "filename": "tools/external_crates/crate_health/src/patch.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-09-30T22:20:29Z",
+      "side": 1,
+      "message": "Is this better matched by a start of line token instead?",
+      "revId": "2bbf7ef41bb60271fba85d692a877211b55fd7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d542b31_67738473",
+        "filename": "tools/external_crates/crate_health/src/patch.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-09-30T22:20:29Z",
+      "side": 1,
+      "message": "Do we need to match the start of a line here?",
+      "revId": "2bbf7ef41bb60271fba85d692a877211b55fd7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
