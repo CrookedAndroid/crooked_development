@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "129ceadb_253d09d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-10-01T18:16:05Z",
+      "side": 1,
+      "message": "Things marked #[allow(dead_code)] are going to be used in follow-up CLs and the suppression will be removed.",
+      "revId": "b17774816cc7f188fd77c16c16c098e9a0050e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
