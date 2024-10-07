@@ -46,6 +46,53 @@
       },
       "revId": "46d4c80a37474481c524ebd131bf707991e2f04f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9f4c29d_472830e9",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-10-07T15:21:11Z",
+      "side": 1,
+      "message": "I think checking whether it contains whitespace is a reasonable check, but please do move the check into `choose_license`.",
+      "parentUuid": "20880a97_8a4af850",
+      "range": {
+        "startLine": 699,
+        "startChar": 30,
+        "endLine": 699,
+        "endChar": 54
+      },
+      "revId": "46d4c80a37474481c524ebd131bf707991e2f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a46b28_a769d837",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-10-07T15:21:11Z",
+      "side": 1,
+      "message": "The `bail!` macro from `anyhow` is a shorter way of doing this.",
+      "range": {
+        "startLine": 703,
+        "startChar": 20,
+        "endLine": 703,
+        "endChar": 38
+      },
+      "revId": "46d4c80a37474481c524ebd131bf707991e2f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
