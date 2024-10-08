@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7e5a8e0_067c9140",
+        "filename": "tools/external_crates/crate_health/src/managed_repo.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-10-08T15:04:42Z",
+      "side": 1,
+      "message": "lol",
+      "revId": "e3e44418874595a82d089d8331bf20c8c3d9e74f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca190a58_5c1d04f3",
+        "filename": "tools/external_crates/crate_health/src/managed_repo.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-10-08T15:04:42Z",
+      "side": 1,
+      "message": "nit: Each of these blocks (in both nested loops) are making assumptions about dependencies (or more concretely, Android is making assumptions that these deps are compatible, even though they don\u0027t obey what the developers said in their Cargo.toml files). Perhaps a comment would be good to explain which kinds of incompatibility we\u0027re trying to \"ignore\".\n\nI think the CL is fine, but it is something that would be a big improvement in understanding the flow of crate updates for non-experts.",
+      "revId": "e3e44418874595a82d089d8331bf20c8c3d9e74f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
