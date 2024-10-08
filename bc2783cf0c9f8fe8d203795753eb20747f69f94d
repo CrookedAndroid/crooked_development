@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4b5bf8d0_35c70374",
+        "filename": "tools/external_crates/crate_health/src/crates_io.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-10-08T14:39:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95a80a96_90e8615b",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "bc2783cf0c9f8fe8d203795753eb20747f69f94d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "59ff11c2_fe63f0a8",
         "filename": "tools/external_crates/crate_health/src/crates_io.rs",
         "patchSetId": 4
@@ -54,6 +78,24 @@
       "writtenOn": "2024-10-07T22:37:15Z",
       "side": 1,
       "message": "nit: Can probably delete dead code",
+      "revId": "bc2783cf0c9f8fe8d203795753eb20747f69f94d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7009ecb_6e3eb5d0",
+        "filename": "tools/external_crates/crate_health/src/managed_repo.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-10-08T14:39:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e83807e7_60fd71c1",
       "revId": "bc2783cf0c9f8fe8d203795753eb20747f69f94d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
