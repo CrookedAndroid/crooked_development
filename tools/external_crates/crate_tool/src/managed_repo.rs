@@ -620,10 +620,16 @@ impl ManagedRepo {
         ))?;
         let base_deps = base_version.android_version_reqs_by_name();
 
-        for version in cio_crate.versions_gt(krate.android_version()) {
+        let mut newer_versions = cio_crate.versions_gt(krate.android_version()).peekable();
+        if newer_versions.peek().is_none() {
+            println!("There are no newer versions of this crate.");
+        }
+        for version in newer_versions {
             println!("Version {}", version.version());
+            let mut found_problems = false;
             let parsed_version = semver::Version::parse(version.version())?;
             if !krate.android_version().is_upgradable_to(&parsed_version) {
+                found_problems = true;
                 if !krate.android_version().is_upgradable_to_relaxed(&parsed_version) {
                     println!("  Not semver-compatible, even by relaxed standards");
                 } else {
@@ -642,6 +648,7 @@ impl ManagedRepo {
                     &legacy_crates
                 };
                 if !cc.contains_name(dep.crate_name()) {
+                    found_problems = true;
                     println!(
                         "  Dep {} {} has not been imported to Android",
                         dep.crate_name(),
@@ -655,6 +662,7 @@ impl ManagedRepo {
                 }
                 for (_, dep_crate) in cc.get_versions(dep.crate_name()) {
                     if !req.matches_relaxed(dep_crate.version()) {
+                        found_problems = true;
                         println!(
                             "  Dep {} {} is not satisfied by v{} at {}",
                             dep.crate_name(),
@@ -667,6 +675,9 @@ impl ManagedRepo {
                         }
                     }
                 }
+            }
+            if !found_problems {
+                println!("  No problems found with this version.")
             }
         }
 
