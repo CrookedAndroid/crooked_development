@@ -325,10 +325,10 @@ pub struct VariantConfig {
     /// from the cargo metadata.
     #[serde(default = "default_true", skip_serializing_if = "is_true")]
     pub run_cargo: bool,
-    /// Generate an Android.bp build file for this variant if true.
+    /// Generate an Android build rule at Android.bp for this variant if true.
     #[serde(default = "default_true", skip_serializing_if = "is_true")]
     pub generate_androidbp: bool,
-    /// Generate a rules.mk build file for this variant if true.
+    /// Generate a Trusty build rule at rules.mk and Android.bp if true.
     #[serde(default, skip_serializing_if = "is_false")]
     pub generate_rulesmk: bool,
 }
