@@ -16,6 +16,75 @@
       "message": "Add Frederick for owner review",
       "revId": "83c8b24b3f7f11f8842b15b2614a29efddd02221",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdf7809f_5fb0251c",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2024-10-11T20:01:22Z",
+      "side": 1,
+      "message": "genrule -\u003e dirgroup ?",
+      "range": {
+        "startLine": 652,
+        "startChar": 65,
+        "endLine": 652,
+        "endChar": 72
+      },
+      "revId": "83c8b24b3f7f11f8842b15b2614a29efddd02221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b0804aa_9fa9903d",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2024-10-11T20:01:22Z",
+      "side": 1,
+      "message": "update or delete comment",
+      "range": {
+        "startLine": 902,
+        "startChar": 0,
+        "endLine": 902,
+        "endChar": 56
+      },
+      "revId": "83c8b24b3f7f11f8842b15b2614a29efddd02221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6da9ec93_a09608c1",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2024-10-11T20:01:22Z",
+      "side": 1,
+      "message": "what\u0027s a dirgroup. i don\u0027t see any of these in AOSP",
+      "range": {
+        "startLine": 906,
+        "startChar": 31,
+        "endLine": 906,
+        "endChar": 39
+      },
+      "revId": "83c8b24b3f7f11f8842b15b2614a29efddd02221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
