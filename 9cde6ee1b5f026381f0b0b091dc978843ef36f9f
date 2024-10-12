@@ -57,6 +57,30 @@
       ],
       "revId": "9cde6ee1b5f026381f0b0b091dc978843ef36f9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62ec860c_3fe05ca1",
+        "filename": "cmds/monkey/src/com/android/commands/monkey/MonkeyMotionEvent.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2024-10-12T07:02:27Z",
+      "side": 1,
+      "message": "Yes, let me delete it.",
+      "parentUuid": "e9f72c4e_5c616462",
+      "range": {
+        "startLine": 127,
+        "startChar": 29,
+        "endLine": 127,
+        "endChar": 41
+      },
+      "revId": "9cde6ee1b5f026381f0b0b091dc978843ef36f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
