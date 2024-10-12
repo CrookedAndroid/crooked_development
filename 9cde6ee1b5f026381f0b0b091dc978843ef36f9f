@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b62e2a6_c9e43e92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2024-10-12T07:00:16Z",
+      "side": 1,
+      "message": "Thanks Linnan, I think this CL is okay. In general focus-based events shouldn\u0027t be tied to a specific display unless there\u0027s a very specific need.\n\nIm still not 100% sure that a display should be allowed to not have a focused window, but still this change seems acceptable.",
+      "revId": "9cde6ee1b5f026381f0b0b091dc978843ef36f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9f72c4e_5c616462",
+        "filename": "cmds/monkey/src/com/android/commands/monkey/MonkeyMotionEvent.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2024-10-12T07:00:16Z",
+      "side": 1,
+      "message": "not used?",
+      "range": {
+        "startLine": 127,
+        "startChar": 29,
+        "endLine": 127,
+        "endChar": 41
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9dd2a29f_90578ed3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cmds/monkey/src/com/android/commands/monkey/MonkeyMotionEvent.java",
+              "range": {
+                "startLine": 126,
+                "startChar": 0,
+                "endLine": 131,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "9cde6ee1b5f026381f0b0b091dc978843ef36f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
