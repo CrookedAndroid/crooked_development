@@ -157,6 +157,30 @@
       },
       "revId": "83c8b24b3f7f11f8842b15b2614a29efddd02221",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b210dc5e_645d9261",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2024-10-14T17:55:53Z",
+      "side": 1,
+      "message": "thanks, was just curious",
+      "parentUuid": "907cd00e_0d29effa",
+      "range": {
+        "startLine": 906,
+        "startChar": 31,
+        "endLine": 906,
+        "endChar": 39
+      },
+      "revId": "83c8b24b3f7f11f8842b15b2614a29efddd02221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
