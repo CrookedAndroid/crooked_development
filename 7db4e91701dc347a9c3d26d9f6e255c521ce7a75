@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e8f21cc_6f22ee5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1807569
+      },
+      "writtenOn": "2024-10-15T09:43:54Z",
+      "side": 1,
+      "message": "I don\u0027t like that setting `generate_rulesmk` modifies `Android.bp`. It is currently possible for ``generate_rulesmk` to be true when there is no `Android.bp`, only a `rules.mk`.",
+      "revId": "7db4e91701dc347a9c3d26d9f6e255c521ce7a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "151237e6_9b93596a",
+        "filename": "tools/cargo_embargo/src/config.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1807569
+      },
+      "writtenOn": "2024-10-15T09:43:54Z",
+      "side": 1,
+      "message": "When `generate_rulesmk` is true, the user expects `rules.mk` to be generated but they do not expect `Android.bp` to be modified unless `generate_androidbp` is true.\n\nI think this creates potential for confusion. Have you considered other solutions, such as adding a third flag `generate_androidbp_for_rulesmk` (I\u0027m sure you can think of a better name)?",
+      "range": {
+        "startLine": 331,
+        "startChar": 4,
+        "endLine": 331,
+        "endChar": 97
+      },
+      "revId": "7db4e91701dc347a9c3d26d9f6e255c521ce7a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0b27e65_0a683c9b",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1807569
+      },
+      "writtenOn": "2024-10-15T09:43:54Z",
+      "side": 1,
+      "message": "does this string mirror the directory organization where `$CRATE` is found under `external/rust/crates/$CRATE`? If so, how do you plan to deal with the switch to the crate monorepo?",
+      "range": {
+        "startLine": 907,
+        "startChar": 33,
+        "endLine": 907,
+        "endChar": 70
+      },
+      "revId": "7db4e91701dc347a9c3d26d9f6e255c521ce7a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
