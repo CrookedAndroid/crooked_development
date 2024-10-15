@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8d1b4bf_425c6d63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-10-15T15:17:12Z",
+      "side": 1,
+      "message": "I\u0027m confused. I thought you were going to add a single dirgroup to the top-level Android.bp.\n\nIt seems odd and intrusive to do this for a large number of crates for a single purpose.\n\nI don\u0027t understand what problem you are trying to solve here.",
+      "revId": "7db4e91701dc347a9c3d26d9f6e255c521ce7a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "151237e6_9b93596a",
         "filename": "tools/cargo_embargo/src/config.rs",
         "patchSetId": 2
