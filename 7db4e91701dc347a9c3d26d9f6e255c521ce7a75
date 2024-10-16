@@ -35,6 +35,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "447b8edb_a0c18117",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2024-10-16T05:02:01Z",
+      "side": 1,
+      "message": "This CL is needed to describe dependency of Trusty build in soong build system. In short, we\u0027d like to build Trusty with Android\u0027s build system for AVF. Trusty build would be invoked inside the `nsjail` by `genrule`, and `dirgroup` will be used to specify mount dirs. (see: go/trusty-with-soong-dd for full context)\n\nWithout this CL, Trusty build will fail because src isn\u0027t specified. In other words, `Android.bp` should have `dirgroup` wherever `rules.mk` exists.",
+      "parentUuid": "4e8f21cc_6f22ee5f",
+      "revId": "7db4e91701dc347a9c3d26d9f6e255c521ce7a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c24c45e8_fccc5eeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2024-10-16T05:02:01Z",
+      "side": 1,
+      "message": "This CL helps build Trusty as a part of Android soong build, to include it for launching keymint VM via AVF.\n\nHere\u0027s the big picture (i.e. summary of go/trusty-with-soong-dd)\n\n- Trusty will be built with soong for AVF for running on the VM\n  - Trusty running on the TEE will remain the same. (i.e. rules.mk is for TEE, Android.bp is for AVF)\n- Trusty build system will be invoked directly via `genrule` but with `nsjail`.\n  - `nsjail` is the process isolation tool that limits the file access to the mounted directories.\n  - Added new property `use_nsjail` for it.\n- To describe dependencies (`srcs` property), `dirgroups` is added to describe which directory to mount.\n\n--\u003e this CL helps to generate `Android.bp` that\u0027s sufficient to read relevant `rules.mk`. We\u0027d like to have one `dirgroup` whereever `rules.mk` exists instead of having a large `Android.bp` that includes all crates in its subdirectories. It helps to minimize dependencies and unnecessary rebuild.\n\nFeel free to tell me if you have more questions/feedback/comments on here.",
+      "parentUuid": "c8d1b4bf_425c6d63",
+      "revId": "7db4e91701dc347a9c3d26d9f6e255c521ce7a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "151237e6_9b93596a",
@@ -58,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d69f93b_edc90005",
+        "filename": "tools/cargo_embargo/src/config.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2024-10-16T05:02:01Z",
+      "side": 1,
+      "message": "I haven\u0027t considered other option. If there\u0027s a `rules.mk`, then there must be a `dirgroup` in `Android.bp`. Otherwise building trusty with genrule will fail due to the missing dependencies.\n\nI left more detail in other places. Feel free to tell me if you have more comments/questions/feedbacks/...",
+      "parentUuid": "151237e6_9b93596a",
+      "range": {
+        "startLine": 331,
+        "startChar": 4,
+        "endLine": 331,
+        "endChar": 97
+      },
+      "revId": "7db4e91701dc347a9c3d26d9f6e255c521ce7a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0b27e65_0a683c9b",
@@ -71,6 +131,30 @@
       "writtenOn": "2024-10-15T09:43:54Z",
       "side": 1,
       "message": "does this string mirror the directory organization where `$CRATE` is found under `external/rust/crates/$CRATE`? If so, how do you plan to deal with the switch to the crate monorepo?",
+      "range": {
+        "startLine": 907,
+        "startChar": 33,
+        "endLine": 907,
+        "endChar": 70
+      },
+      "revId": "7db4e91701dc347a9c3d26d9f6e255c521ce7a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe4ceffe_911ad288",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2024-10-16T05:02:01Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to mirror the directory path although I name it based on the existing directory path. We can keep the name as-is regardless of the monorepo.",
+      "parentUuid": "d0b27e65_0a683c9b",
       "range": {
         "startLine": 907,
         "startChar": 33,
