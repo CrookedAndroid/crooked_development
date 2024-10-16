@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd8ca338_2d629695",
+        "filename": "tools/cargo_embargo/src/config.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2024-10-16T11:59:38Z",
+      "side": 1,
+      "message": "Strictly speaking, `generate_androidbp` means that \u0027generates soong build rule for Rust crate to be used by other soong module\u0027. I can change the comment of `generate_androidbp` instead. Tell me if you prefer so.\n\nGiven that we\u0027ll build Trusty with `genrule` as well, if `rules.mk` is created (i.e. Trusty will use it), `dirgroup` __MUST__ be created inside the `Android.bp`. Otherwise Trusty build will fail. In other words, if `generate_rulesmk\u003dtrue` doesn\u0027t touch `Android.bp`, then it\u0027s bug of `cargo_embargo` because it doesn\u0027t create build rules that Trusty requires.",
+      "parentUuid": "1ab1edc5_299bcb21",
+      "range": {
+        "startLine": 331,
+        "startChar": 4,
+        "endLine": 331,
+        "endChar": 97
+      },
+      "revId": "7db4e91701dc347a9c3d26d9f6e255c521ce7a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0b27e65_0a683c9b",
         "filename": "tools/cargo_embargo/src/main.rs",
         "patchSetId": 2
