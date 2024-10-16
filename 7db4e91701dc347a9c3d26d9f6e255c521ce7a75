@@ -226,6 +226,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad946fd7_42f2838d",
+        "filename": "tools/cargo_embargo/src/config.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2024-10-16T16:47:23Z",
+      "side": 1,
+      "message": "\u003e Some crates have a variant where `generate_rulesmk` is true and `generate_androidbp` is false. See `cargo_embargo.json` for `zerocopy` for an example.\n\nFortunately, `zerocopy` only has `generate_androidbp \u003d false` for one variant. `cargo_embargo` is still responsible for generating its `Android.bp` file, so this shouldn\u0027t cause a problem.\n\nIf there is some user that only wants `cargo_embargo` to generate a `rules.mk` and has a handwritten `Android.bp` file in the same dir, then this change is going to result in that `Android.bp` being clobbered. That sounds like a strange setup to me, so probably fine to ignore until it is a real problem.",
+      "parentUuid": "8dee812e_f08e9fef",
+      "range": {
+        "startLine": 331,
+        "startChar": 4,
+        "endLine": 331,
+        "endChar": 97
+      },
+      "revId": "7db4e91701dc347a9c3d26d9f6e255c521ce7a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0b27e65_0a683c9b",
