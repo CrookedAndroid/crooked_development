@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ab1edc5_299bcb21",
+        "filename": "tools/cargo_embargo/src/config.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1807569
+      },
+      "writtenOn": "2024-10-16T10:30:10Z",
+      "side": 1,
+      "message": "My worry is that you are silently changing the semantics of an existing flag. Some crates have a variant where `generate_rulesmk` is true and `generate_androidbp` is false. See `cargo_embargo.json` for `zerocopy` for an example.\n\nIn this CL, the former flag now implies the latter so `Android.bp` is modified even if `cargo_embargo.json` sets `generate_androidbp` to false. Shouldn\u0027t `cargo_embargo` emit an error or a warning in that case?",
+      "parentUuid": "9d69f93b_edc90005",
+      "range": {
+        "startLine": 331,
+        "startChar": 4,
+        "endLine": 331,
+        "endChar": 97
+      },
+      "revId": "7db4e91701dc347a9c3d26d9f6e255c521ce7a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0b27e65_0a683c9b",
         "filename": "tools/cargo_embargo/src/main.rs",
         "patchSetId": 2
