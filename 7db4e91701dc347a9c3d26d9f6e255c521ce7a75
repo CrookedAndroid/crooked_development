@@ -89,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeda1617_87d9a35f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2024-10-16T15:32:17Z",
+      "side": 1,
+      "message": "Build team wanted to minimize dependencies and Trusty doesn\u0027t use all of the `external/rust/android-crates-io`. Build team approved `dirgroup` just to limit # of parameters of `nsjail`, but wanted to be more explicit about dependencies in detail.",
+      "parentUuid": "fce6e9de_49618fc7",
+      "revId": "7db4e91701dc347a9c3d26d9f6e255c521ce7a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "151237e6_9b93596a",
@@ -174,6 +192,30 @@
       "side": 1,
       "message": "Strictly speaking, `generate_androidbp` means that \u0027generates soong build rule for Rust crate to be used by other soong module\u0027. I can change the comment of `generate_androidbp` instead. Tell me if you prefer so.\n\nGiven that we\u0027ll build Trusty with `genrule` as well, if `rules.mk` is created (i.e. Trusty will use it), `dirgroup` __MUST__ be created inside the `Android.bp`. Otherwise Trusty build will fail. In other words, if `generate_rulesmk\u003dtrue` doesn\u0027t touch `Android.bp`, then it\u0027s bug of `cargo_embargo` because it doesn\u0027t create build rules that Trusty requires.",
       "parentUuid": "1ab1edc5_299bcb21",
+      "range": {
+        "startLine": 331,
+        "startChar": 4,
+        "endLine": 331,
+        "endChar": 97
+      },
+      "revId": "7db4e91701dc347a9c3d26d9f6e255c521ce7a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dee812e_f08e9fef",
+        "filename": "tools/cargo_embargo/src/config.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2024-10-16T15:32:17Z",
+      "side": 1,
+      "message": "Changed the help message of `generate_androidbp`. Parameter name doesn\u0027t match exactly with the behavior, but let me keep it as-is for compatibility reason.",
+      "parentUuid": "bd8ca338_2d629695",
       "range": {
         "startLine": 331,
         "startChar": 4,
