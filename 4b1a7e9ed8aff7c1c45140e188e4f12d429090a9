@@ -16,6 +16,24 @@
       "message": "Is this still needed or is the annotation now dead?",
       "revId": "4b1a7e9ed8aff7c1c45140e188e4f12d429090a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26013c55_0a1af47d",
+        "filename": "tools/external_crates/crate_tool/src/pseudo_crate.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-10-17T14:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7862ae7_7b1c24e9",
+      "revId": "4b1a7e9ed8aff7c1c45140e188e4f12d429090a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
