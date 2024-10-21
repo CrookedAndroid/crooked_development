@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aa1b3f1_8dcdf31c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903830
+      },
+      "writtenOn": "2024-10-21T15:59:33Z",
+      "side": 1,
+      "message": "This is not correct, because both license apply.\n\ncargo_embargo does not currently support this case; I have raised the issue with Andrew and am waiting to hear back from him.",
+      "revId": "0d6a1cd2fd20ec37d5af2b18c6cc207c31cb502a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
