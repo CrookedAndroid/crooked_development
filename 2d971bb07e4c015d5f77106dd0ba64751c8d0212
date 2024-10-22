@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d97b0aba_312a5964",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2024-10-22T11:51:59Z",
+      "side": 1,
+      "message": "I don\u0027t like that this is arbitrarily choosing the first variant to get the overrides from, but I can\u0027t think of a better approach without significant changes.",
+      "revId": "2d971bb07e4c015d5f77106dd0ba64751c8d0212",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
