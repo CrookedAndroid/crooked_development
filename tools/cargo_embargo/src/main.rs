@@ -329,10 +329,10 @@ fn make_crates(args: &Args, cfg: &VariantConfig, intermediates_dir: &Path) -> Re
 /// Runs cargo_embargo with the given JSON configuration file.
 fn run_embargo(args: &Args, config_filename: &Path, intermediates_dir: &Path) -> Result<()> {
     let intermediates_glob = intermediates_dir
+        .join("target.tmp/**/build/*/out/*")
         .to_str()
         .ok_or(anyhow!("Failed to convert intermediate dir path to string"))?
-        .to_string()
-        + "target.tmp/**/build/*/out/*";
+        .to_string();
 
     let cfg = Config::from_file(config_filename)?;
     let crates = make_all_crates(args, &cfg, intermediates_dir)?;
