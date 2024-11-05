@@ -16,6 +16,24 @@
       "message": "I thought I tried this before and it didn\u0027t work, but if it works now then great!",
       "revId": "9e5f528bfe6718288ab0d3022372af3c1c31b403",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab1cef30_9c4ec771",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1882526
+      },
+      "writtenOn": "2024-11-05T14:51:46Z",
+      "side": 1,
+      "message": "Not sure why it\u0027s now working but here\u0027s how I validated it, from `external/crosvm`:\n```\nrm $(find ${ANDROID_HOST_OUT} -type f -name bpfmt) \ncargo_embargo generate cargo_embargo.json\n```\nfails with a lot of\n```\nERROR: Running bpfmt: No such file or directory (os error 2)\n```\nthen\n```\ngit restore . # remove the intermediate Android.bp files\nm cargo_embargo\ncargo_embargo generate cargo_embargo.json\n```\nsucceeds.",
+      "parentUuid": "ec977d9b_81e20893",
+      "revId": "9e5f528bfe6718288ab0d3022372af3c1c31b403",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
