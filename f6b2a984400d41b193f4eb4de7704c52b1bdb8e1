@@ -22,6 +22,30 @@
       },
       "revId": "f6b2a984400d41b193f4eb4de7704c52b1bdb8e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79ff3172_3a008284",
+        "filename": "tools/cargo_embargo/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1882526
+      },
+      "writtenOn": "2024-11-05T18:55:40Z",
+      "side": 1,
+      "message": "Thanks for pointing this out, done!",
+      "parentUuid": "857bf504_f0935424",
+      "range": {
+        "startLine": 950,
+        "startChar": 59,
+        "endLine": 950,
+        "endChar": 68
+      },
+      "revId": "f6b2a984400d41b193f4eb4de7704c52b1bdb8e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
