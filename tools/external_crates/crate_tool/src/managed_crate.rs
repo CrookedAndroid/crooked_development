@@ -13,11 +13,13 @@
 // limitations under the License.
 
 use std::{
+    collections::HashMap,
     fs::{copy, read_dir, read_link, read_to_string, remove_dir_all, rename, write},
     os::unix::fs::symlink,
     path::PathBuf,
     process::{Command, Output},
     str::from_utf8,
+    sync::LazyLock,
 };
 
 use anyhow::{anyhow, Context, Result};
@@ -76,6 +78,9 @@ static CUSTOMIZATIONS: &[&str] = &[
 ];
 
 static SYMLINKS: &[&str] = &["LICENSE", "NOTICE"];
+
+static DELETIONS: LazyLock<HashMap<&'static str, &'static [&'static str]>> =
+    LazyLock::new(|| HashMap::from([("libbpf-sys", ["elfutils", "zlib", "libbpf"].as_slice())]));
 
 impl<State: ManagedCrateState> ManagedCrate<State> {
     pub fn name(&self) -> &str {
@@ -344,6 +349,14 @@ impl ManagedCrate<Vendored> {
                     ));
                 }
                 symlink(dest, dest_dir.join(link)?)?;
+            }
+        }
+        for deletion in *DELETIONS.get(self.name()).unwrap_or(&[].as_slice()) {
+            let dir = self.staging_path().join(deletion)?;
+            if dir.abs().is_dir() {
+                remove_dir_all(dir)?;
+            } else {
+                return Err(anyhow!("{} is not a directory", dir));
             }
         }
         Ok(())
