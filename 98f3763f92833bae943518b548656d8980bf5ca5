@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0cc025e_8547deef",
+        "filename": "tools/external_crates/test_mapping/Cargo.toml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-11-12T23:10:22Z",
+      "side": 1,
+      "message": "Stray comment or still useful? If you want a TODO, then make it a TODO, and not something that looks scary.",
+      "revId": "98f3763f92833bae943518b548656d8980bf5ca5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e48ef10d_5ed5b917",
+        "filename": "tools/external_crates/test_mapping/src/blueprint.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2024-11-12T23:10:22Z",
+      "side": 1,
+      "message": "minor typo: \u0027r\u0027\nAlso do you expect to error out here? Perhaps return `None` similar to `as_string_vec`?",
+      "range": {
+        "startLine": 123,
+        "startChar": 65,
+        "endLine": 123,
+        "endChar": 66
+      },
+      "revId": "98f3763f92833bae943518b548656d8980bf5ca5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
