@@ -200,19 +200,23 @@ impl ManagedRepo {
         }
 
         let pseudo_crate = self.pseudo_crate();
-        if unpinned {
-            pseudo_crate.cargo_add_unpinned(krate)
-        } else {
-            pseudo_crate.cargo_add(krate)
+        if crate_name != "libsqlite3-sys" {
+            if unpinned {
+                pseudo_crate.cargo_add_unpinned(krate)
+            } else {
+                pseudo_crate.cargo_add(krate)
+            }
+            .inspect_err(|_e| {
+                let _ = pseudo_crate.remove(krate.name());
+            })?;
         }
-        .inspect_err(|_e| {
-            let _ = pseudo_crate.remove(krate.name());
-        })?;
         let pseudo_crate = pseudo_crate.vendor()?;
 
         let mc = ManagedCrate::new(Crate::from(krate.path().clone())?).stage(&pseudo_crate)?;
 
-        pseudo_crate.remove(krate.name())?;
+        if crate_name != "libsqlite3-sys" {
+            pseudo_crate.remove(krate.name())?;
+        }
 
         let version = mc.vendored_version().clone();
         if mc.android_version() != mc.vendored_version() {
@@ -323,7 +327,10 @@ impl ManagedRepo {
                 unpinned.contains(crate_name),
                 versions.get(crate_name),
             )?;
-            let src_dir = self.legacy_dir_for(crate_name, Some(&version))?;
+            let src_dir = self.legacy_dir_for(
+                crate_name,
+                if unpinned.contains(crate_name) { None } else { Some(&version) },
+            )?;
 
             let monorepo_crate_dir = self.managed_dir();
             if !monorepo_crate_dir.abs().exists() {
@@ -341,7 +348,10 @@ impl ManagedRepo {
 
         for crate_name in &crates {
             let crate_name = crate_name.as_ref();
-            let src_dir = self.legacy_dir_for(crate_name, versions.get(crate_name))?;
+            let src_dir = self.legacy_dir_for(
+                crate_name,
+                if unpinned.contains(crate_name) { None } else { versions.get(crate_name) },
+            )?;
             for entry in glob(
                 src_dir
                     .abs()

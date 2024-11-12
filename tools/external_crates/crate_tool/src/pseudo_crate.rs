@@ -73,21 +73,30 @@ impl PseudoCrate<CargoVendorClean> {
     pub fn deps(&self) -> &BTreeMap<String, Version> {
         self.extra.deps.get_or_init(|| {
             let output = Command::new("cargo")
-                .args(["tree", "--depth=1", "--prefix=none"])
+                .args(["tree", "--depth=2", "--prefix=depth"])
                 .current_dir(&self.path)
                 .run_quiet_and_expect_success()
                 .unwrap();
             let mut deps = BTreeMap::new();
-            for line in from_utf8(&output.stdout).unwrap().lines().skip(1) {
-                let words = line.split(' ').collect::<Vec<_>>();
+            for line in from_utf8(&output.stdout).unwrap().lines() {
+                let depth = line.chars().next().unwrap();
+                if depth == '0' {
+                    continue;
+                }
+                let words = line[1..].split(' ').collect::<Vec<_>>();
                 if words.len() < 2 {
                     panic!("Failed to parse crate name and version from cargo tree: {}", line);
                 }
-                let version = words[1]
-                    .strip_prefix('v')
-                    .ok_or(anyhow!("Failed to parse version: {}", words[1]))
-                    .unwrap();
-                deps.insert(words[0].to_string(), Version::parse(version).unwrap());
+                if depth == '1' || words[0] == "libsqlite3-sys" {
+                    let version = words[1]
+                        .strip_prefix('v')
+                        .ok_or(anyhow!("Failed to parse version: {}", words[1]))
+                        .unwrap();
+                    deps.insert(words[0].to_string(), Version::parse(version).unwrap());
+                }
+            }
+            if !deps.contains_key("rusqlite") {
+                deps.remove("libsqlite3-sys");
             }
             deps
         })
